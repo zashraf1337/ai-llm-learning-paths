@@ -146,82 +146,7 @@
 
 <div class="wrap">
 
-  <section class="block" style="padding-bottom:6px">
-    <div class="living">
-      <b>This is a living guide.</b> Come back anytime. To update it: click any course's <b>status pill</b> (To do → Doing → Done) for a quick in-session view, or just tell me what you finished / want added and I'll update this same artifact in place so it sticks. Status clicks here are view-only and reset on reload — telling me (or editing the file) is what persists.
-    </div>
-  </section>
-
-  <!-- HONEST FIT -->
-  <section class="block">
-    <h2 class="sec">The honest take — how the career paths fit you</h2>
-    <p style="margin:0 0 14px;font-size:14.5px;color:var(--ink2);max-width:860px">
-      All paths sit on the same ML base, so do <b>Foundations</b> first. After that they differ a lot in how directly your skills transfer and how fast you reach real, paid work. Ranked for <i>your</i> starting point:
-    </p>
-    <div class="fit-grid">
-      <div class="fit-card">
-        <div class="rank">Best fit · #1</div>
-        <h3><span class="dot" style="background:var(--sec)"></span>Red-teaming / LLM security</h3>
-        <p>Your security instincts transfer almost 1:1. Shortest ramp to paid work, booming demand, real bugs in week one. Your differentiated edge.</p>
-        <span class="fitscore" style="background:#fee2e2;color:#991b1b">Fit: very high · ramp: fast</span>
-      </div>
-      <div class="fit-card">
-        <div class="rank">Best fit · #2</div>
-        <h3><span class="dot" style="background:var(--aieng)"></span>AI Engineer (agentic)</h3>
-        <p>The fastest general SWE→AI on-ramp. Agentic apps (RAG, agents, MCP) are the hottest hiring area and need engineering, not a PhD. Pairs perfectly with security.</p>
-        <span class="fitscore" style="background:#cffafe;color:#155e75">Fit: very high · ramp: fast</span>
-      </div>
-      <div class="fit-card">
-        <div class="rank">Strong fit · #3</div>
-        <h3><span class="dot" style="background:var(--build)"></span>Building &amp; fine-tuning</h3>
-        <p>Hot and doable solo. Applied fine-tuning / post-training leans on engineering. Reach for it when off-the-shelf models aren't enough.</p>
-        <span class="fitscore" style="background:#ffedd5;color:#9a3412">Fit: high · ramp: medium</span>
-      </div>
-      <div class="fit-card">
-        <div class="rank">Strong fit · #4</div>
-        <h3><span class="dot" style="background:var(--infra)"></span>Infra &amp; MLOps</h3>
-        <p>Your SWE/systems muscles directly. MLOps/LLMOps hires fast; the GPU/kernel niche is a durable, hard-to-fill edge.</p>
-        <span class="fitscore" style="background:#d1fae5;color:#065f46">Fit: high · ramp: medium</span>
-      </div>
-      <div class="fit-card">
-        <div class="rank">Longest road · #5</div>
-        <h3><span class="dot" style="background:var(--research)"></span>AI researcher</h3>
-        <p>Math- and publication-gated (often a PhD). The realistic on-ramp is <b>research engineer</b> (ARENA, interpretability, reproductions). Pursue for depth, not a near-term job.</p>
-        <span class="fitscore" style="background:#ede9fe;color:#5b21b6">Fit: medium · ramp: slow</span>
-      </div>
-    </div>
-    <p style="margin:14px 0 0;font-size:13.5px;color:#3a3a3a;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:11px 14px">
-      <b>Your unfair advantage:</b> combine #1 and #2. Security + AI/agentic engineering = <b>AI/agentic security engineer</b> — the person who can build agentic systems <i>and</i> break them. That niche is scarce, premium, and exactly where your background points.
-    </p>
-  </section>
-
-  <!-- ROADMAP -->
-  <section class="block">
-    <h2 class="sec">Suggested sequence (part-time)</h2>
-    <div class="phases">
-      <div class="phase">
-        <div class="wk">Phase 0 · ~weeks 1–8</div>
-        <h4>Foundations</h4>
-        <p>fast.ai + Karpathy "Zero to Hero", math intuition just-in-time. Outcome: you can train and actually understand models.</p>
-      </div>
-      <div class="phase">
-        <div class="wk">Phase 1 · ~weeks 6–18</div>
-        <h4>Spearhead: AI Engineer + Security</h4>
-        <p>Build agentic apps (RAG → agents → MCP → evals) and red-team them (HackAPrompt → OWASP/ATLAS → tooling). The two reinforce: you attack what you build.</p>
-      </div>
-      <div class="phase">
-        <div class="wk">Phase 2 · ~weeks 14–24</div>
-        <h4>Build &amp; fine-tune</h4>
-        <p>When prompting/RAG isn't enough: HF LLM course → Unsloth fine-tune → post-training → Raschka's book. Adds custom-model depth to your engineering.</p>
-      </div>
-      <div class="phase">
-        <div class="wk">Phase 3 · weeks 22+</div>
-        <h4>Infra/MLOps depth &amp; edge</h4>
-        <p>Pick by traction: LLMOps/serving, GPU/kernels, distributed training, or advanced security/interpretability. Researcher track = slow burn alongside.</p>
-      </div>
-    </div>
-  </section>
-
+  <!-- Filters are the first thing under the header (fit-ranking + roadmap removed; browse via filters) -->
   <!-- CONTROLS -->
   <div class="controls">
     <div class="wrap" style="padding:0">
@@ -265,6 +190,12 @@
   </div>
 
   <div id="tracks"></div>
+
+  <section class="block" style="padding:20px 0 4px">
+    <div class="living">
+      <b>This is a living guide.</b> Come back anytime. To update it: click any course's <b>status pill</b> (To do → Doing → Done) for a quick in-session view, or just tell me what you finished / want added and I'll update this same artifact in place so it sticks. Status clicks here are view-only and reset on reload — telling me (or editing the file) is what persists.
+    </div>
+  </section>
 
   <footer>
     <p><b>How to read the ratings.</b> "Fit" is calibrated to <i>you</i> (strong engineer, newer to ML, security-leaning), not the general public — a course can be world-class and still "Situational" for your goals. "The honest take" is where I flag caveats (dated material, prerequisites, hype vs. substance).</p>
