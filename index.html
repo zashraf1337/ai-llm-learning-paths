@@ -7,7 +7,7 @@
 <style>
   :root{
     --bg:#f6f6f3; --surface:#ffffff; --ink:#181818; --ink2:#565656; --line:#e6e6e1;
-    --found:#6366f1; --sec:#dc2626; --aieng:#0891b2; --build:#d97706; --infra:#059669; --research:#7c3aed;
+    --found:#6366f1; --sec:#dc2626; --aieng:#0891b2; --coding:#c026d3; --build:#d97706; --infra:#059669; --research:#7c3aed;
     --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.05);
   }
   *{box-sizing:border-box}
@@ -18,37 +18,15 @@
   .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
   header.top{background:linear-gradient(135deg,#1e293b,#0f172a);color:#fff;padding:38px 0 30px}
   header.top h1{margin:0 0 8px;font-size:30px;letter-spacing:-.02em;font-weight:750}
-  header.top p{margin:0;color:#c8d2e0;max-width:820px;font-size:15.5px}
+  header.top p{margin:0;color:#c8d2e0;max-width:880px;font-size:15.5px}
   .meta-line{margin-top:14px;font-size:12.5px;color:#93a2b7}
   .tag{display:inline-block;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);
     color:#e2e8f0;padding:3px 9px;border-radius:999px;font-size:12px;margin:4px 6px 0 0}
 
-  section.block{padding:24px 0}
-  h2.sec{font-size:13px;text-transform:uppercase;letter-spacing:.09em;color:var(--ink2);
-    margin:0 0 14px;font-weight:700}
-
+  section.block{padding:20px 0}
   .living{background:#fffdf3;border:1px solid #f0e6c0;border-left:4px solid #d97706;border-radius:12px;
     padding:13px 16px;margin:4px 0 0;font-size:13.5px;color:#4a4327}
   .living b{color:#7a5c12}
-
-  .fit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
-  .fit-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:15px 16px;box-shadow:var(--shadow)}
-  .fit-card .rank{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
-  .fit-card h3{margin:5px 0 6px;font-size:15.5px;display:flex;align-items:center;gap:8px}
-  .dot{width:10px;height:10px;border-radius:50%;flex:0 0 auto}
-  .fit-card p{margin:0;font-size:13px;color:var(--ink2)}
-  .fitscore{font-size:11.5px;font-weight:700;margin-top:8px;display:inline-block;padding:2px 8px;border-radius:6px}
-
-  .phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-  .phase{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--found);
-    border-radius:12px;padding:14px 16px}
-  .phase h4{margin:0 0 4px;font-size:15px}
-  .phase .wk{font-size:11.5px;color:var(--ink2);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
-  .phase p{margin:6px 0 0;font-size:13px;color:var(--ink2)}
-  .phase:nth-child(1){border-left-color:var(--found)}
-  .phase:nth-child(2){border-left-color:var(--sec)}
-  .phase:nth-child(3){border-left-color:var(--build)}
-  .phase:nth-child(4){border-left-color:var(--infra)}
 
   .controls{position:sticky;top:0;z-index:20;background:var(--bg);padding:14px 0 10px;border-bottom:1px solid var(--line)}
   .pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
@@ -57,6 +35,7 @@
   .pill:hover{border-color:#c9c9c2}
   .pill.active{background:#111;color:#fff;border-color:#111}
   .pill .dot{width:9px;height:9px}
+  .dot{width:10px;height:10px;border-radius:50%;flex:0 0 auto}
   .row2{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
   .seg{display:flex;gap:6px}
   .seg button{border:1px solid var(--line);background:var(--surface);cursor:pointer;
@@ -67,6 +46,8 @@
   .count{font-size:12.5px;color:var(--ink2);margin-left:auto;white-space:nowrap}
   .legend{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 0;font-size:11.5px;color:var(--ink2)}
   .legend span{display:inline-flex;align-items:center;gap:5px}
+  .pill:focus-visible,.seg button:focus-visible,.status:focus-visible,#search:focus-visible,.card h4 a:focus-visible{
+    outline:2px solid #2563eb;outline-offset:2px;border-radius:4px}
 
   .track{padding:22px 0 6px}
   .track-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:4px}
@@ -134,44 +115,44 @@
 <header class="top">
   <div class="wrap">
     <h1>AI / LLM Learning Paths</h1>
-    <p>A practical, project-first guide across six tracks — <b>Foundations</b>, <b>Red-teaming / LLM security</b>, <b>AI Engineer (agentic apps)</b>, <b>Building &amp; fine-tuning models</b>, <b>Infra &amp; MLOps</b>, and <b>AI researcher</b> — tuned for a strong software/security engineer newer to ML, learning part-time, willing to pay for quality. Every course lists the goal, what you build, cost/time, and an honest read on how useful it is. Each track also has <b>prove-it projects</b> — things to build to learn the skill and show ability. Click a course's status pill to track your progress.</p>
+    <p>A practical, project-first guide across seven tracks — <b>Foundations</b>, <b>Red-teaming / LLM security</b>, <b>AI Engineer (agentic apps)</b>, <b>Coding Agents</b>, <b>Building &amp; fine-tuning models</b>, <b>Infra &amp; MLOps</b>, and <b>AI researcher</b> — for anyone moving into AI/LLM work. Every resource lists the goal, what you build, cost and time, and an honest read on how useful it is. Each track also has <b>prove-it projects</b>. Career and demand notes are general observations worth checking against current job postings. Progress is saved in your browser where supported.</p>
     <div class="meta-line">
-      <span class="tag">Profile: SWE + security, newer to ML</span>
-      <span class="tag">Pace: part-time</span>
-      <span class="tag">Budget: will pay for quality</span>
-      <span class="tag">v3 · updated Aug 13, 2026</span>
+      <span class="tag">7 tracks</span>
+      <span class="tag">~80 resources + 20 projects</span>
+      <span class="tag">Free &amp; paid options</span>
+      <span class="tag">Verified &amp; updated Aug 2026</span>
     </div>
   </div>
 </header>
 
 <div class="wrap">
 
-  <!-- Filters are the first thing under the header (fit-ranking + roadmap removed; browse via filters) -->
-  <!-- CONTROLS -->
+  <!-- CONTROLS (filters at top) -->
   <div class="controls">
     <div class="wrap" style="padding:0">
       <div class="pills" id="pills">
-        <button class="pill active" data-track="all">All tracks</button>
-        <button class="pill" data-track="foundations"><span class="dot" style="background:var(--found)"></span>Foundations</button>
-        <button class="pill" data-track="security"><span class="dot" style="background:var(--sec)"></span>Security / Red-team</button>
-        <button class="pill" data-track="aieng"><span class="dot" style="background:var(--aieng)"></span>AI Engineer</button>
-        <button class="pill" data-track="build"><span class="dot" style="background:var(--build)"></span>Build &amp; Fine-tune</button>
-        <button class="pill" data-track="infra"><span class="dot" style="background:var(--infra)"></span>Infra &amp; MLOps</button>
-        <button class="pill" data-track="research"><span class="dot" style="background:var(--research)"></span>Researcher</button>
+        <button type="button" class="pill active" data-track="all" aria-pressed="true">All tracks</button>
+        <button type="button" class="pill" data-track="foundations" aria-pressed="false"><span class="dot" style="background:var(--found)"></span>Foundations</button>
+        <button type="button" class="pill" data-track="security" aria-pressed="false"><span class="dot" style="background:var(--sec)"></span>Security / Red-team</button>
+        <button type="button" class="pill" data-track="aieng" aria-pressed="false"><span class="dot" style="background:var(--aieng)"></span>AI Engineer</button>
+        <button type="button" class="pill" data-track="coding" aria-pressed="false"><span class="dot" style="background:var(--coding)"></span>Coding Agents</button>
+        <button type="button" class="pill" data-track="build" aria-pressed="false"><span class="dot" style="background:var(--build)"></span>Build &amp; Fine-tune</button>
+        <button type="button" class="pill" data-track="infra" aria-pressed="false"><span class="dot" style="background:var(--infra)"></span>Infra &amp; MLOps</button>
+        <button type="button" class="pill" data-track="research" aria-pressed="false"><span class="dot" style="background:var(--research)"></span>Researcher</button>
       </div>
       <div class="row2">
         <div class="seg" id="costToggle"><span class="seg-label">Cost</span>
-          <button data-cost="all" class="active">All</button>
-          <button data-cost="free">Free</button>
-          <button data-cost="paid">Paid</button>
+          <button type="button" data-cost="all" class="active" aria-pressed="true">All</button>
+          <button type="button" data-cost="free" aria-pressed="false">Free</button>
+          <button type="button" data-cost="paid" aria-pressed="false">Paid</button>
         </div>
         <div class="seg" id="statusToggle"><span class="seg-label">Status</span>
-          <button data-status="all" class="active">All</button>
-          <button data-status="todo">To do</button>
-          <button data-status="doing">Doing</button>
-          <button data-status="done">Done</button>
+          <button type="button" data-status="all" class="active" aria-pressed="true">All</button>
+          <button type="button" data-status="todo" aria-pressed="false">To do</button>
+          <button type="button" data-status="doing" aria-pressed="false">Doing</button>
+          <button type="button" data-status="done" aria-pressed="false">Done</button>
         </div>
-        <input id="search" type="text" placeholder="Search courses, tools, topics…" autocomplete="off">
+        <input id="search" type="text" placeholder="Search courses, tools, topics…" autocomplete="off" aria-label="Search resources">
         <span class="count" id="count"></span>
       </div>
       <div class="legend">
@@ -181,7 +162,7 @@
         <span><span class="badge b-high">High value</span></span>
         <span><span class="badge b-deep">Go deeper</span></span>
         <span><span class="badge b-sit">Situational</span></span>
-        <span style="margin-left:8px"><b>Progress:</b> click a pill →</span>
+        <span style="margin-left:8px"><b>Progress</b> (saved in your browser): click a pill →</span>
         <span><span class="status" data-status="todo" style="cursor:default">To do</span></span>
         <span><span class="status" data-status="doing" style="cursor:default">Doing</span></span>
         <span><span class="status" data-status="done" style="cursor:default">Done</span></span>
@@ -193,15 +174,16 @@
 
   <section class="block" style="padding:20px 0 4px">
     <div class="living">
-      <b>This is a living guide.</b> Come back anytime. To update it: click any course's <b>status pill</b> (To do → Doing → Done) for a quick in-session view, or just tell me what you finished / want added and I'll update this same artifact in place so it sticks. Status clicks here are view-only and reset on reload — telling me (or editing the file) is what persists.
+      <b>This guide is updated periodically</b> as new courses, tools, and certifications appear (a scheduled monthly review checks each track). Use each course's <b>status pill</b> (To do → Doing → Done) to track progress — it's saved in your browser via localStorage where supported; some embedded viewers don't persist it.
     </div>
   </section>
 
   <footer>
-    <p><b>How to read the ratings.</b> "Fit" is calibrated to <i>you</i> (strong engineer, newer to ML, security-leaning), not the general public — a course can be world-class and still "Situational" for your goals. "The honest take" is where I flag caveats (dated material, prerequisites, hype vs. substance).</p>
-    <p><b>Cost note.</b> Most "Paid" picks are Coursera / DeepLearning.AI (≈$49/mo, cancel anytime), one-off books (~$30–60), or cheap Udemy courses (often ~$15–25 on sale). The one expensive item is the AI Red Teaming Masterclass (AIRTP+, ~$1,199), flagged where it appears.</p>
-    <p><b>Primary sources:</b> Stanford CS336 / CS224n / CS231n, fast.ai, Karpathy (Zero-to-Hero, nanochat), Hugging Face (LLM / AI Agents / MCP / Context courses, Ultra-Scale Playbook), DeepLearning.AI (Agentic AI, DSPy, post-training, RAG, LLMOps), LangChain Academy, Anthropic Academy, GPU MODE, Chip Huyen (<i>AI Engineering</i> &amp; <i>Designing ML Systems</i>), Sebastian Raschka, Maxime Labonne, ARENA / Neel Nanda, Learn Prompting / HackAPrompt, OWASP GenAI Security Project, MITRE ATLAS, NVIDIA DLI. Verify current pricing/enrollment on each provider's site.</p>
-    <p style="color:#999">To self-edit: this file's course list is a plain JS array (<code>const COURSES</code>) near the bottom — change a course's <code>status</code> to <code>"doing"</code> or <code>"done"</code> to bake in progress, or add your own <code>{...}</code> entries.</p>
+    <p><b>How to read the ratings.</b> "Fit" reflects how central a resource is <i>within its track</i> — <b>Start here</b> and <b>Core</b> first, <b>Situational</b> only if you need that specific thing. It is not a measure of quality: a resource can be world-class and still "Situational" for a given goal. "The honest take" flags caveats — dated material, prerequisites, hype vs. substance.</p>
+    <p><b>Careers &amp; demand.</b> Notes about hiring, "fit," and demand are general observations from public sources, not guarantees. Validate against current job postings in your region and role before making decisions.</p>
+    <p><b>Cost &amp; accuracy.</b> Prices were checked on official pages in Aug 2026 and change often — reconfirm before paying. Notably: DeepLearning.AI short-course <i>videos</i> are free, but hands-on labs, quizzes, and certificates now require DeepLearning.AI <b>Pro</b> (~$25/mo). Many "free" items are open-source tools or open web resources. The AI Red Teaming (AIRTP+) credential is tiered: exam ~$299, on-demand course + exam ~$1,199, live cohort ~$1,495.</p>
+    <p><b>Primary sources:</b> Stanford CS336/CS224n/CS231n, fast.ai, Karpathy (Zero-to-Hero, nanochat), Hugging Face (LLM / Agents / MCP courses, TRL, Ultra-Scale Playbook), DeepLearning.AI, Anthropic Academy, OpenAI (Agents SDK, Responses API, Evals), Google (ADK), LangChain Academy, GPU MODE, Chip Huyen (<i>AI Engineering</i>, <i>Designing ML Systems</i>), Raschka, Maxime Labonne, ARENA / Neel Nanda, Learn Prompting / HackAPrompt, OWASP GenAI Security Project, MITRE ATLAS, NIST AI RMF, SWE-bench, DataTalksClub, and the tool projects' own docs (vLLM, SGLang, Ollama, LiteLLM, Ragas, Inspect, Langfuse, Phoenix, garak, PyRIT, promptfoo). Verify current pricing/enrollment on each provider's site.</p>
+    <p style="color:#999">Self-hosted: this is a single self-contained HTML file. The resource list is a plain JS array (<code>const COURSES</code>); edit a <code>status</code> or add <code>{...}</code> entries to customize. Progress persists in localStorage on your own domain.</p>
   </footer>
 </div>
 
@@ -209,332 +191,392 @@
 const TRACKS = {
   foundations:{name:"Foundations (do this first)",color:"var(--found)",
     sub:"The shared ML base under every path. Top-down + from-scratch, so you both use models and understand them.",
-    note:"You're a strong engineer newer to ML, so <b>don't skip this and don't over-index on math textbooks.</b> fast.ai (use models fast) + Karpathy (build them from scratch) is the ideal combo. Pull in math only when you hit a wall."},
+    note:"If you can already code but are new to ML, <b>don't skip this and don't over-index on math textbooks.</b> fast.ai (use models fast) + Karpathy (build them from scratch) is the ideal combo. Pull in math only when you hit a wall."},
   security:{name:"Red-teaming / LLM security",color:"var(--sec)",
-    sub:"Attacking and defending AI systems: prompt injection, jailbreaks, adversarial ML, agent/tool abuse, and structured assessments.",
-    note:"<b>Your highest-leverage path.</b> Security experience transfers directly and the ramp to paid work is the shortest of all. Lead with hands-on play (Gandalf/HackAPrompt), then formalize with frameworks (OWASP, ATLAS) and tooling (garak, PyRIT)."},
+    sub:"Attacking and defending AI systems: prompt injection, jailbreaks, adversarial ML, agent/tool abuse, governance, and benchmarks.",
+    note:"Existing security skills transfer directly, and AI-security roles are increasingly posted — likely a strong fit for security professionals (check current postings to confirm demand in your market). Lead with hands-on play, then formalize with frameworks, governance, tooling, and benchmarks."},
   aieng:{name:"AI Engineer — agentic apps",color:"var(--aieng)",
-    sub:"Building applications on top of foundation models: prompt/context engineering, RAG, agents & multi-agent systems, MCP, and evals.",
-    note:"<b>The fastest, most accessible AI career for a SWE</b> — no model training required. Work through it as streams: <b>prompt/context → RAG → agents/agentic → evals & production.</b> Evals and reliability are what separate a demo from a shipped product; treat them as core, not optional."},
+    sub:"Building applications on foundation models: prompt/context, RAG, agents & multi-agent, platform SDKs, multimodal, and evals.",
+    note:"One of the most accessible entry points for software engineers — no model training required. Work through it as streams: <b>prompt/context → RAG → agents → platform SDKs → multimodal → evals & observability.</b> Evals and reliability are what separate a demo from a shipped product; treat them as core."},
+  coding:{name:"Coding Agents — AI-assisted software engineering",color:"var(--coding)",
+    sub:"Using and building agents that write and modify code: Claude Code / Codex / Cursor / Aider, repo & context engineering, sandboxed execution, and coding-agent evals.",
+    note:"The AI area with the broadest day-to-day relevance to working engineers. Two halves: <b>use coding agents well</b> (context/spec engineering, review, guardrails) and <b>build/customize</b> them (harnesses, sandboxed tool exec). It shares the agentic foundations with AI Engineer but has its own tools and its own benchmark (SWE-bench)."},
   build:{name:"Building &amp; fine-tuning models",color:"var(--build)",
-    sub:"Making models do what you want: SFT, LoRA/QLoRA, DPO/RLHF/GRPO, data, and shipping custom models.",
-    note:"Reach here when prompting/RAG isn't enough. <b>You can fine-tune something useful in a weekend</b> with Unsloth; depth comes from Raschka's book and CS336. Model-level evals are the real bottleneck — build them early."},
+    sub:"Making models do what you want: pretraining, SFT, LoRA/QLoRA, DPO/RLHF/GRPO, data quality, and shipping custom models.",
+    note:"Reach here when prompting/RAG isn't enough. You can fine-tune something useful in a weekend with Unsloth; depth comes from Raschka's book and CS336. <b>Data quality is where most fine-tuning success actually comes from</b> — and model-level evals are the real bottleneck, so build both early."},
   infra:{name:"Infra &amp; MLOps",color:"var(--infra)",
-    sub:"Running AI in production and at scale — organized into four streams.",
-    note:"Your SWE/systems skills map here most directly. <b>MLOps/LLMOps hires fast and broadly; the GPU-performance niche (CUDA/Triton) is a durable, hard-to-fill edge.</b> Streams below go from 'ship & operate models' to 'train them across a cluster' — start with MLOps/LLMOps and go deeper only where the work pulls you."},
+    sub:"Running AI in production and at scale — MLOps, LLMOps & serving, GPU/systems, and distributed training.",
+    note:"The track where software and systems skills map most directly. MLOps/LLMOps roles are widely posted; the GPU-performance niche (CUDA/Triton) is specialized and hard to fill. Streams go from 'ship & operate models' to 'train them across a cluster' — start with MLOps/serving and go deeper where the work pulls you."},
   research:{name:"AI researcher",color:"var(--research)",
     sub:"Understanding and advancing model capabilities: the science under the systems.",
-    note:"Be clear-eyed: <b>pure research is the slowest, most credential-gated path.</b> The realistic on-ramp is <b>research engineer</b> — ARENA, mechanistic interpretability, and reproducing papers. It deepens every other track, so treat it as a long slow burn, not a sprint."}
+    note:"Pure research is the slowest, most credential-gated path (often a PhD + publications). The more accessible on-ramp is <b>research engineer</b> — ARENA, mechanistic interpretability, and reproducing papers. It deepens every other track, so treat it as a long slow burn."}
+};
+
+const ptypeLabel = {build:"Personal build",oss:"Open-source",demo:"Demo & write-up",port:"Portfolio"};
+const PROJECTS = {
+  foundations:[
+    {type:"build",title:"Retrain nanoGPT on a corpus you own",blurb:"Use Karpathy's nanoGPT to train a small GPT on text you care about and sample from it.",proves:"You can run the full training loop end-to-end and understand tokenization, loss, and sampling."},
+    {type:"demo",title:"Rebuild micrograd + a tiny MLP",blurb:"Reimplement a scalar autograd engine and train a small net; write up how backprop flows.",proves:"You truly understand gradients and backprop — not just calling .fit()."}
+  ],
+  security:[
+    {type:"port",title:"LLM vuln report on an open app",blurb:"Run garak + manual testing against an open-source LLM app; write a report mapped to OWASP LLM Top 10, MITRE ATLAS, and the NIST AI RMF.",proves:"Real red-team methodology plus governance-grade reporting."},
+    {type:"oss",title:"Ship a garak or PyRIT probe",blurb:"Contribute a new probe/detector to garak or an attack module to PyRIT.",proves:"You can extend production red-team tooling — visible OSS credibility."},
+    {type:"port",title:"Benchmark a model's safety",blurb:"Run HarmBench / JailbreakBench / StrongREJECT (via Inspect) against a model and publish a scored, reproducible report.",proves:"You can quantify robustness, not just find one-off jailbreaks."}
+  ],
+  aieng:[
+    {type:"port",title:"RAG assistant with a real eval suite",blurb:"Build a RAG app over a corpus you know, plus a Ragas eval harness and request tracing (Langfuse/Phoenix).",proves:"You ship reliable RAG, not a demo — the evals are the differentiator."},
+    {type:"build",title:"Multi-agent workflow over MCP tools",blurb:"Build a LangGraph or ADK agent that uses 2–3 MCP tools to finish a real task.",proves:"Agentic engineering plus tool integration end-to-end."},
+    {type:"oss",title:"Publish an MCP server",blurb:"Wrap a useful API or tool as an open-source MCP server others can plug into.",proves:"Command of the agent-tooling ecosystem; high-signal public work."}
+  ],
+  coding:[
+    {type:"port",title:"Ship a repo change end-to-end with an agent",blurb:"Use a coding agent to produce a plan, implement a real change, add tests, and capture the transcript + a pass/fail eval.",proves:"You can drive a coding agent to a merged, tested change — the core agentic-dev workflow."},
+    {type:"build",title:"Build a minimal coding-agent harness",blurb:"Wire an LLM to file read/write plus a sandboxed shell in a plan → act → test loop on a small repo.",proves:"You understand what's under Cursor/Claude Code, not just how to use them."},
+    {type:"oss",title:"Make an OSS repo agent-ready",blurb:"Contribute an AGENTS.md, a spec, and a small SWE-bench-style eval to a public project.",proves:"You can prepare a real codebase for agents — a useful, visible contribution."}
+  ],
+  build:[
+    {type:"port",title:"Fine-tune a model + publish a model card",blurb:"LoRA/QLoRA fine-tune (Unsloth/TRL) on a focused, well-documented dataset; publish to the HF Hub with a model card and eval numbers.",proves:"End-to-end fine-tuning with honest evaluation and provenance."},
+    {type:"build",title:"Apply DPO or GRPO to change a behavior",blurb:"Post-train a base model with DPO/GRPO (TRL) to shift a measurable behavior; document before/after.",proves:"Modern post-training, and that data/reward design — not just the algorithm — drives results."},
+    {type:"demo",title:"Build a clean instruction dataset",blurb:"Curate or synthesize (Distilabel) a small preference/SFT set with dedup, quality filters, and a contamination check.",proves:"You know the part of fine-tuning that actually determines quality: the data."}
+  ],
+  infra:[
+    {type:"port",title:"Deploy + monitor an LLM inference service",blurb:"Serve a model with vLLM or SGLang (batching, quantization); add latency/throughput dashboards and autoscaling.",proves:"Production LLMOps/serving in real operational terms."},
+    {type:"oss",title:"Write and benchmark a CUDA/Triton kernel",blurb:"Implement a fused kernel, benchmark vs baseline, and share it (GPU MODE community).",proves:"Rare GPU-performance skill that few candidates have."},
+    {type:"port",title:"Local-first AI gateway",blurb:"Stand up Ollama/llama.cpp behind LiteLLM with routing, fallback, and cost tracking across providers.",proves:"You can run and route models cost-effectively — a real ops concern."}
+  ],
+  research:[
+    {type:"port",title:"Reproduce a recent paper",blurb:"Reproduce a key result and publish the repo plus a short report on what matched and what didn't.",proves:"The core research-engineer skill: turning a paper into verified code."},
+    {type:"oss",title:"Mechanistic-interpretability mini-investigation",blurb:"Use TransformerLens to find and explain a small circuit or feature; write it up.",proves:"Genuine research ability — and it doubles as model-level security insight."},
+    {type:"demo",title:"ARENA capstone extension",blurb:"Complete an ARENA chapter and extend one exercise into a small original experiment.",proves:"Research-engineer readiness with a concrete artifact."}
+  ]
 };
 
 const COURSES = [
   // ---------- FOUNDATIONS ----------
   {t:"foundations",fit:"start",status:"todo",title:"Practical Deep Learning for Coders",prov:"fast.ai · Jeremy Howard",url:"https://course.fast.ai/",cost:"Free",cType:"free",time:"~8 wks",level:"Beginner ML (coders)",
-    goal:"Train real, working deep-learning models fast, top-down, then peel back the layers.",
-    proj:"Ship image + text classifiers in the first sessions; later build pieces from scratch.",
-    take:"The single best on-ramp for a strong coder newer to ML — you have a working model running almost immediately, which keeps momentum."},
+    goal:"Train real, working deep-learning models fast, top-down, then peel back the layers.",proj:"Ship image + text classifiers early; later build pieces from scratch.",
+    take:"The single best on-ramp for experienced coders who are new to ML — a working model runs almost immediately, which keeps momentum."},
   {t:"foundations",fit:"start",status:"todo",title:"Neural Networks: Zero to Hero",prov:"Andrej Karpathy",url:"https://karpathy.ai/zero-to-hero.html",cost:"Free",cType:"free",time:"~20–30 hrs",level:"Beginner→Intermediate",
-    goal:"Understand backprop→transformers by building them line-by-line in Python.",
-    proj:"micrograd (autograd), makemore, and a working GPT (nanoGPT) — all from scratch.",
-    take:"Nothing builds real intuition this efficiently. Do it alongside fast.ai: fast.ai for breadth/use, Karpathy for depth/understanding."},
+    goal:"Understand backprop → transformers by building them line-by-line in Python.",proj:"micrograd, makemore, and a working GPT (nanoGPT) — all from scratch.",
+    take:"Nothing builds real intuition this efficiently. Do it alongside fast.ai: fast.ai for breadth, Karpathy for depth."},
   {t:"foundations",fit:"high",status:"todo",title:"Essence of Linear Algebra + Neural Networks",prov:"3Blue1Brown",url:"https://www.3blue1brown.com/topics/neural-networks",cost:"Free",cType:"free",time:"~6 hrs",level:"Any",
-    goal:"Geometric intuition for the math (vectors, matrices, gradients) without grinding proofs.",
-    proj:"None — watch when a concept feels opaque.",
-    take:"Your just-in-time math fix. As an engineer you don't need a formal math course to start; reach for these when stuck."},
-  {t:"foundations",fit:"high",status:"todo",title:"Deep Learning Specialization",prov:"DeepLearning.AI · Andrew Ng (Coursera)",url:"https://www.coursera.org/specializations/deep-learning",cost:"Paid (~$49/mo)",cType:"paid",time:"~3 mos",level:"Beginner→Intermediate",
-    goal:"Structured, rigorous fundamentals: NNs, CNNs, sequence models, tuning.",
-    proj:"Guided assignments building each architecture.",
-    take:"Optional if fast.ai + Karpathy click. But since you'll pay for quality, it's the cleanest structured backbone and fills gaps those two skip."},
-  {t:"foundations",fit:"sit",status:"todo",title:"Mathematics for Machine Learning",prov:"Imperial College London (Coursera)",url:"https://www.coursera.org/specializations/mathematics-machine-learning",cost:"Paid (~$49/mo)",cType:"paid",time:"~2 mos",level:"Beginner",
-    goal:"Formal linear algebra, calculus, and PCA/probability for ML.",
-    proj:"Problem sets.",
-    take:"Only if you want the math formally (helpful before the researcher track). Otherwise 3B1B + just-in-time is enough to start."},
+    goal:"Geometric intuition for the math (vectors, matrices, gradients) without grinding proofs.",proj:"None — watch when a concept feels opaque.",
+    take:"A just-in-time math fix — you don't need a formal math course to start; reach for these when stuck."},
+  {t:"foundations",fit:"high",status:"todo",title:"Deep Learning Specialization",prov:"DeepLearning.AI · Andrew Ng (Coursera)",url:"https://www.coursera.org/specializations/deep-learning",cost:"Audit free · cert ~$59/mo",cType:"free",time:"~3 mos",level:"Beginner→Intermediate",
+    goal:"Structured, rigorous fundamentals: NNs, CNNs, sequence models, tuning.",proj:"Guided assignments building each architecture.",
+    take:"Optional if fast.ai + Karpathy click, but it's the cleanest structured backbone — worth it for a rigorous, guided path. Coursera audit is free; certificate is paid."},
+  {t:"foundations",fit:"sit",status:"todo",title:"Mathematics for Machine Learning",prov:"Imperial College London (Coursera)",url:"https://www.coursera.org/specializations/mathematics-machine-learning",cost:"Audit free · cert ~$49/mo",cType:"free",time:"~2 mos",level:"Beginner",
+    goal:"Formal linear algebra, calculus, and PCA/probability for ML.",proj:"Problem sets.",
+    take:"Only if you want the math formally (helpful before the research track). Otherwise 3B1B + just-in-time is enough to start."},
 
   // ---------- SECURITY ----------
-  {t:"security",fit:"start",status:"todo",title:"Gandalf",prov:"Lakera",url:"https://gandalf.lakera.ai/",cost:"Free",cType:"free",time:"~1 hr",level:"Any",
-    goal:"Feel prompt-injection/jailbreak mechanics through a game.",
-    proj:"Beat all levels; note which tactics work.",
+  {t:"security",stream:"Get hands-on",fit:"start",status:"todo",title:"Gandalf",prov:"Lakera",url:"https://gandalf.lakera.ai/",cost:"Free",cType:"free",time:"~1 hr",level:"Any",
+    goal:"Feel prompt-injection/jailbreak mechanics through a game.",proj:"Beat all levels; note which tactics work.",
     take:"A 30–60 min warm-up that gives you the 'bug'. Do it before anything else in this track."},
-  {t:"security",fit:"start",status:"todo",title:"HackAPrompt (playground + competition)",prov:"Learn Prompting",url:"https://www.hackaprompt.com/",cost:"Free",cType:"free",time:"Ongoing",level:"Beginner→Advanced",
-    goal:"Learn real prompt-hacking by attacking live targets in the largest AI red-team event.",
-    proj:"Climb the leaderboard; keep a write-up of each successful attack pattern.",
-    take:"The fastest, most fun way in — and it directly leverages your security mindset. Attacks you find here are portfolio material."},
-  {t:"security",fit:"core",status:"todo",title:"Introduction to Prompt Hacking",prov:"Learn Prompting",url:"https://learnprompting.org/courses/intro-to-prompt-hacking",cost:"Free audit",cType:"free",time:"~3 days",level:"Beginner→Intermediate",
-    goal:"Structured fundamentals of prompt injection, jailbreaking, and defenses.",
-    proj:"Attack/defend exercises with a certificate.",
-    take:"The clean, structured intro that turns your HackAPrompt tinkering into named techniques and defenses."},
-  {t:"security",fit:"core",status:"todo",title:"Red Teaming LLM Applications",prov:"DeepLearning.AI · Giskard",url:"https://www.deeplearning.ai/short-courses/red-teaming-llm-applications/",cost:"Free",cType:"free",time:"~1.5 hrs",level:"Beginner",
-    goal:"Systematically red-team an LLM app and automate it with an open-source library.",
-    proj:"Red-team a chatbot; auto-generate a vulnerability report with Giskard.",
+  {t:"security",stream:"Get hands-on",fit:"start",status:"todo",title:"HackAPrompt (playground + competition)",prov:"Learn Prompting",url:"https://www.hackaprompt.com/",cost:"Free",cType:"free",time:"Ongoing",level:"Beginner→Advanced",
+    goal:"Learn real prompt-hacking by attacking live targets in a large AI red-team event.",proj:"Climb the leaderboard; write up each successful attack pattern.",
+    take:"The fastest, most fun way in, and it rewards a security mindset. Attacks you find here are portfolio material."},
+  {t:"security",stream:"Get hands-on",fit:"core",status:"todo",title:"Red Teaming LLM Applications",prov:"DeepLearning.AI · Giskard",url:"https://www.deeplearning.ai/short-courses/red-teaming-llm-applications/",cost:"Videos free · Pro ~$25/mo (labs)",cType:"free",time:"~1.5 hrs",level:"Beginner",
+    goal:"Systematically red-team an LLM app and automate it with an open-source library.",proj:"Red-team a chatbot; auto-generate a vulnerability report with Giskard.",
     take:"Short, practical, framed for engineers — the 'do it on a real app' bridge from games to work."},
-  {t:"security",fit:"core",status:"todo",title:"OWASP Top 10 for LLM Applications",prov:"OWASP GenAI Security Project",url:"https://genai.owasp.org/",cost:"Free",cType:"free",time:"~1 day",level:"Any",
-    goal:"The shared industry taxonomy of LLM/GenAI risks.",
-    proj:"Map a real application to each of the Top 10.",
+  {t:"security",stream:"Frameworks, taxonomy & governance",fit:"core",status:"todo",title:"OWASP Top 10 for LLM Applications",prov:"OWASP GenAI Security Project",url:"https://genai.owasp.org/",cost:"Free",cType:"free",time:"~1 day",level:"Any",
+    goal:"The shared industry taxonomy of LLM/GenAI risks.",proj:"Map a real application to each of the Top 10.",
     take:"Know this cold — it's the vocabulary every AI-security report and job posting uses."},
-  {t:"security",fit:"high",status:"todo",title:"MITRE ATLAS",prov:"MITRE",url:"https://atlas.mitre.org/",cost:"Free",cType:"free",time:"~1 day",level:"Intermediate",
-    goal:"Adversary tactics & techniques for AI systems (the 'ATT&CK for AI').",
-    proj:"Build a threat model for an AI system using ATLAS TTPs.",
-    take:"The structured backbone for real assessments. Your ATT&CK familiarity makes this feel native."},
-  {t:"security",fit:"high",status:"todo",title:"Red-team tooling: garak · PyRIT · promptfoo",prov:"NVIDIA · Microsoft · promptfoo",url:"https://github.com/NVIDIA/garak",cost:"Free",cType:"free",time:"~1–2 wks",level:"Intermediate",
-    goal:"Automate LLM vulnerability scanning and red-team orchestration.",
-    proj:"Run garak + PyRIT against an open model; triage and report findings.",
-    take:"The working red-teamer's toolkit. Scanning real models is where you become employable, not just knowledgeable."},
-  {t:"security",fit:"high",status:"todo",title:"Securing agents & MCP (injection, tool abuse)",prov:"OWASP Agentic + Anthropic/practitioner guides",url:"https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/",cost:"Free",cType:"free",time:"~1 wk",level:"Intermediate",
-    goal:"Understand the new attack surface: agent tool-use, MCP servers, memory/RAG poisoning, excessive agency.",
-    proj:"Threat-model an agentic app you built; attempt tool-abuse & indirect prompt injection.",
-    take:"The frontier where your two edges meet. Agentic security is scarce expertise right now — do this right after building an agent in the AI Engineer track."},
-  {t:"security",fit:"deep",status:"todo",title:"Exploring Adversarial Machine Learning",prov:"NVIDIA DLI",url:"https://www.nvidia.com/en-us/training/",cost:"Paid (~$90)",cType:"paid",time:"~8 hrs",level:"Intermediate (Python/ML)",
-    goal:"Go below prompts to model-level attacks: evasion, poisoning, inversion, extraction.",
-    proj:"Attack and defend trained ML models; assess abuse scenarios.",
-    take:"Rounds you out beyond prompt-hacking into classic adversarial ML — important for credibility as a true AI-security specialist."},
-  {t:"security",fit:"high",status:"todo",title:"AI Red Teaming Masterclass (AIRTP+)",prov:"Learn Prompting · Sander Schulhoff",url:"https://learnprompting.org/blog/ai-red-teaming-courses",cost:"Paid (~$1,199)",cType:"paid",time:"~4 wks",level:"Advanced",
-    goal:"Advanced attacks + a recognized AI-red-teaming certification.",
-    proj:"Expose vulnerabilities in real AI systems; sit the AIRTP+ exam.",
-    take:"The most complete paid AI-red-team cert right now. Given your budget + background it's a defensible résumé line — do it after the free track, not before."},
-  {t:"security",fit:"sit",status:"todo",title:"Attacking AI (live) / Hands-On AI Red Teaming",prov:"Arcanum (J. Haddix) · OffSec",url:"https://arcanum-sec.com/training/attacking-ai",cost:"Paid",cType:"paid",time:"2–3 days / self-paced",level:"Intermediate→Advanced",
-    goal:"Instructor-led offensive AI training and/or a performance-based cert from a known infosec brand.",
-    proj:"Exploit LLM apps, agents, and surrounding infra end-to-end.",
-    take:"Pick one when you want live instruction or a recognizable offensive-security brand on your CV. Overlaps with AIRTP+ — you don't need both."},
+  {t:"security",stream:"Frameworks, taxonomy & governance",fit:"high",status:"todo",title:"MITRE ATLAS",prov:"MITRE",url:"https://atlas.mitre.org/",cost:"Free",cType:"free",time:"~1 day",level:"Intermediate",
+    goal:"Adversary tactics & techniques for AI systems (the 'ATT&CK for AI').",proj:"Build a threat model for an AI system using ATLAS TTPs.",
+    take:"The structured backbone for real assessments. Anyone familiar with MITRE ATT&CK will find it immediately natural."},
+  {t:"security",stream:"Frameworks, taxonomy & governance",fit:"high",status:"todo",title:"NIST AI RMF + Generative AI Profile",prov:"NIST (AI 100-1, AI 600-1)",url:"https://www.nist.gov/itl/ai-risk-management-framework",cost:"Free",cType:"free",time:"~1–2 days",level:"Intermediate",
+    goal:"Governance/risk: the AI Risk Management Framework, its GenAI Profile, model cards, and TEVV (test, evaluation, validation & verification).",proj:"Map an AI system to the RMF functions; draft a model card and risk register.",
+    take:"The governance language enterprises and government increasingly require. Pairs with OWASP/ATLAS to turn red-teaming into an auditable program."},
+  {t:"security",stream:"Frameworks, taxonomy & governance",fit:"high",status:"todo",title:"Securing agents & MCP (injection, tool abuse)",prov:"OWASP Agentic + practitioner guides",url:"https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/",cost:"Free",cType:"free",time:"~1 wk",level:"Intermediate",
+    goal:"The new attack surface: agent tool-use, MCP servers, memory/RAG poisoning, excessive agency.",proj:"Threat-model an agentic app; attempt tool-abuse & indirect prompt injection.",
+    take:"The frontier where security and agentic engineering meet — scarce expertise right now. Do it right after building an agent."},
+  {t:"security",stream:"Tooling & automation",fit:"high",status:"todo",title:"Red-team tooling: garak · PyRIT · promptfoo",prov:"NVIDIA · Microsoft · promptfoo",url:"https://github.com/NVIDIA/garak",cost:"Free / OSS",cType:"free",time:"~1–2 wks",level:"Intermediate",
+    goal:"Automate LLM vulnerability scanning and red-team orchestration.",proj:"Run garak + PyRIT against an open model; triage and report findings.",
+    take:"The working red-teamer's toolkit. Scanning real models is where the skills become employable."},
+  {t:"security",stream:"Benchmarks & evals",fit:"high",status:"todo",title:"Safety & robustness benchmarks: HarmBench · JailbreakBench · StrongREJECT",prov:"CAIS · JailbreakBench · StrongREJECT",url:"https://www.harmbench.org/",cost:"Free / OSS",cType:"free",time:"~1 wk",level:"Intermediate→Advanced",
+    goal:"Measure jailbreak robustness and harmful-behavior refusal with standardized, published benchmarks.",proj:"Score a model on one benchmark and publish a reproducible result.",
+    take:"Moves you from anecdotal jailbreaks to quantifiable, comparable safety numbers — what serious assessments report."},
+  {t:"security",stream:"Benchmarks & evals",fit:"high",status:"todo",title:"CyberSecEval (PurpleLlama) + Inspect Evals",prov:"Meta · UK AI Safety Institute",url:"https://meta-llama.github.io/PurpleLlama/",cost:"Free / OSS",cType:"free",time:"~1 wk",level:"Intermediate→Advanced",
+    goal:"Evaluate models' cyber-risk (insecure-code, exploit assistance) and run security evals in a reproducible harness (Inspect).",proj:"Run a CyberSecEval suite and an Inspect eval; compare two models.",
+    take:"The cyber-specific complement to jailbreak benchmarks, plus the eval framework (Inspect) used across AI-safety work."},
+  {t:"security",stream:"Adversarial ML & advanced",fit:"deep",status:"todo",title:"Exploring Adversarial Machine Learning",prov:"NVIDIA DLI",url:"https://www.nvidia.com/en-us/training/",cost:"Paid (~$90)",cType:"paid",time:"~8 hrs",level:"Intermediate (Python/ML)",
+    goal:"Go below prompts to model-level attacks: evasion, poisoning, inversion, extraction.",proj:"Attack and defend trained ML models; assess abuse scenarios.",
+    take:"Rounds you out beyond prompt-hacking into classic adversarial ML — useful credibility as an AI-security specialist."},
+  {t:"security",stream:"Courses & certifications",fit:"core",status:"todo",title:"Introduction to Prompt Hacking",prov:"Learn Prompting",url:"https://learnprompting.org/courses/intro-to-prompt-hacking",cost:"Free audit",cType:"free",time:"~3 days",level:"Beginner→Intermediate",
+    goal:"Structured fundamentals of prompt injection, jailbreaking, and defenses.",proj:"Attack/defend exercises with a certificate.",
+    take:"The clean, structured intro that turns hands-on HackAPrompt experience into named techniques and defenses."},
+  {t:"security",stream:"Courses & certifications",fit:"high",status:"todo",title:"AI Red Teaming Masterclass + AIRTP+ cert",prov:"Learn Prompting · Sander Schulhoff",url:"https://learnprompting.org/blog/ai-red-teaming-courses",cost:"Exam ~$299 · on-demand ~$1,199 · live ~$1,495",cType:"paid",time:"~4–6 wks",level:"Advanced",
+    goal:"Advanced attacks plus a certification, offered as exam-only, on-demand+exam, or live cohort+exam.",proj:"Expose vulnerabilities in real AI systems; sit the AIRTP+ exam.",
+    take:"The most complete paid AI-red-team credential right now. Pick the tier that fits; verify employer recognition for your target roles. Do it after the free track."},
+  {t:"security",stream:"Courses & certifications",fit:"sit",status:"todo",title:"Attacking AI (live) — Jason Haddix",prov:"Arcanum Security",url:"https://arcanum-sec.com/training/attacking-ai",cost:"Paid (live; free 1-hr intro via Antisyphon)",cType:"paid",time:"2 days",level:"Intermediate→Advanced",
+    goal:"Instructor-led offensive AI tradecraft: attacking LLM apps, agents, and surrounding infrastructure.",proj:"Exploit LLM apps and agents end-to-end using a 7-point methodology.",
+    take:"Strong if you want live instruction from a well-known offensive-security practitioner. A free 1-hour 'Anti-Cast' intro lets you sample it first."},
+  {t:"security",stream:"Courses & certifications",fit:"sit",status:"todo",title:"OSAI — Offensive AI (AI-300)",prov:"OffSec",url:"https://www.offsec.com/",cost:"Paid (OffSec subscription)",cType:"paid",time:"Self-paced",level:"Intermediate→Advanced",
+    goal:"Self-paced offensive-AI course + exam: prompt injection, model abuse, AI system exploitation, with hands-on labs.",proj:"Complete the lab challenges and the performance-based exam.",
+    take:"A structured, lab-heavy cert from a recognized offensive-security brand. Overlaps with AIRTP+/Arcanum — pick one path, not all three."},
 
   // ---------- AI ENGINEER ----------
   {t:"aieng",stream:"Overview",fit:"core",status:"todo",title:"AI Engineering (O'Reilly, 2025)",prov:"Chip Huyen (book)",url:"https://www.oreilly.com/library/view/ai-engineering/9781098166298/",cost:"Paid (~$50)",cType:"paid",time:"~3–4 wks",level:"Intermediate",
-    goal:"The whole discipline of building apps on foundation models: prompting, RAG, evals, agents, inference, deployment, trade-offs.",
-    proj:"Design a production AI system on paper, then build a slice of it.",
-    take:"The definitive text for this exact role, written for people with your background. Start the AI-Engineer track here — it's the map for everything below."},
-  {t:"aieng",stream:"Prompt & context engineering",fit:"core",status:"todo",title:"ChatGPT Prompt Engineering for Developers",prov:"DeepLearning.AI · OpenAI",url:"https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/",cost:"Free",cType:"free",time:"~1.5 hrs",level:"Beginner",
-    goal:"Prompt patterns from an API/engineering perspective (not chat tricks).",
-    proj:"Build summarize/extract/transform prompt functions in code.",
-    take:"A fast, free grounding. Do it in an afternoon before touching RAG or agents."},
-  {t:"aieng",stream:"Prompt & context engineering",fit:"high",status:"todo",title:"Anthropic Academy (API · prompt eng · MCP · Claude Code)",prov:"Anthropic",url:"https://www.anthropic.com/learn",cost:"Free",cType:"free",time:"~self-paced",level:"Beginner→Intermediate",
-    goal:"Build with the Claude API and MCP; production prompt engineering and tool use straight from the source.",
-    proj:"Ship a small Claude-powered app; wire up an MCP server/tool.",
-    take:"First-party, current, and free. The MCP + tool-use material is directly relevant to both agentic building and (later) securing agents."},
-  {t:"aieng",stream:"RAG",fit:"core",status:"todo",title:"Building & Evaluating Advanced RAG",prov:"DeepLearning.AI · LlamaIndex/TruEra",url:"https://www.deeplearning.ai/short-courses/building-evaluating-advanced-rag/",cost:"Free",cType:"free",time:"~1–2 hrs",level:"Intermediate",
-    goal:"Retrieval that actually works: chunking, re-ranking, and — crucially — evaluating RAG quality.",
-    proj:"Build a RAG pipeline and measure it (retrieval + answer metrics).",
-    take:"RAG is the bread-and-butter of AI-engineering jobs. The 'evaluating' half is what most people skip and what makes you good."},
+    goal:"The whole discipline of building apps on foundation models: prompting, RAG, evals, agents, inference, deployment, trade-offs.",proj:"Design a production AI system on paper, then build a slice of it.",
+    take:"The definitive text for the AI-engineering role, written for working software engineers. Start the track here — it's the map for everything below."},
+  {t:"aieng",stream:"Prompt & context engineering",fit:"core",status:"todo",title:"ChatGPT Prompt Engineering for Developers",prov:"DeepLearning.AI · OpenAI",url:"https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/",cost:"Videos free · Pro ~$25/mo (labs)",cType:"free",time:"~1.5 hrs",level:"Beginner",
+    goal:"Prompt patterns from an API/engineering perspective (not chat tricks).",proj:"Build summarize/extract/transform prompt functions in code.",
+    take:"A fast, mostly-free grounding. Do it in an afternoon before touching RAG or agents."},
+  {t:"aieng",stream:"Prompt & context engineering",fit:"high",status:"todo",title:"Anthropic Academy (API · prompt eng · MCP)",prov:"Anthropic",url:"https://www.anthropic.com/learn",cost:"Free",cType:"free",time:"Self-paced",level:"Beginner→Intermediate",
+    goal:"Build with the Claude API and MCP; production prompt engineering and tool use, first-party.",proj:"Ship a small Claude-powered app; wire up an MCP server/tool.",
+    take:"First-party, current, free, with certificates. The MCP + tool-use material also sets up the Coding Agents track."},
+  {t:"aieng",stream:"RAG",fit:"core",status:"todo",title:"Building & Evaluating Advanced RAG",prov:"DeepLearning.AI · LlamaIndex/TruEra",url:"https://www.deeplearning.ai/short-courses/building-evaluating-advanced-rag/",cost:"Videos free · Pro ~$25/mo (labs)",cType:"free",time:"~1–2 hrs",level:"Intermediate",
+    goal:"Retrieval that works: chunking, re-ranking, and — crucially — evaluating RAG quality.",proj:"Build a RAG pipeline and measure retrieval + answer quality.",
+    take:"RAG is the bread-and-butter of AI-engineering jobs; the 'evaluating' half is what most people skip and what makes you good."},
+  {t:"aieng",stream:"RAG",fit:"high",status:"todo",title:"LLM Zoomcamp (end-to-end cohort)",prov:"DataTalksClub",url:"https://github.com/DataTalksClub/llm-zoomcamp",cost:"Free",cType:"free",time:"~10 wks",level:"Beginner→Intermediate",
+    goal:"Build a production LLM/RAG app: ingestion, vector search, orchestration, evaluation, and monitoring.",proj:"A working RAG application with an eval and a monitoring dashboard.",
+    take:"A free, project-driven cohort that ties prompt→RAG→eval→monitoring into one shipped system — great structure if you like deadlines."},
   {t:"aieng",stream:"Agents & agentic engineering",fit:"core",status:"todo",title:"Hugging Face AI Agents Course",prov:"Hugging Face",url:"https://huggingface.co/learn/agents-course",cost:"Free (certified)",cType:"free",time:"~20–30 hrs",level:"Beginner→Intermediate",
-    goal:"Understand, build, and deploy agents from first principles through frameworks.",
-    proj:"Build and deploy your own agent; earn the certificate.",
+    goal:"Understand, build, and deploy agents from first principles through frameworks.",proj:"Build and deploy your own agent; earn the certificate.",
     take:"The best free, structured on-ramp to agentic engineering. Start the agents stream here."},
-  {t:"aieng",stream:"Agents & agentic engineering",fit:"core",status:"todo",title:"Agentic AI",prov:"DeepLearning.AI · Andrew Ng",url:"https://www.deeplearning.ai/courses/agentic-ai/",cost:"Paid (~$49/mo)",cType:"paid",time:"~2–3 wks",level:"Intermediate",
-    goal:"Build agentic systems that act through iterative, multi-step workflows (reflection, tool use, planning, multi-agent).",
-    proj:"Build, debug, and optimize a multi-step agentic workflow.",
-    take:"Ng's flagship agentic course — the clearest structured treatment of the design patterns that actually matter in production agents."},
+  {t:"aieng",stream:"Agents & agentic engineering",fit:"core",status:"todo",title:"Agentic AI",prov:"DeepLearning.AI · Andrew Ng",url:"https://www.deeplearning.ai/courses/agentic-ai/",cost:"Videos free · Pro ~$25/mo (labs)",cType:"free",time:"~2–3 wks",level:"Intermediate",
+    goal:"Build agentic systems that act through iterative, multi-step workflows (reflection, tool use, planning, multi-agent).",proj:"Build, debug, and optimize a multi-step agentic workflow.",
+    take:"Ng's flagship agentic course — the clearest structured treatment of the design patterns that matter in production agents."},
   {t:"aieng",stream:"Agents & agentic engineering",fit:"high",status:"todo",title:"Introduction to LangGraph",prov:"LangChain Academy",url:"https://academy.langchain.com/",cost:"Free",cType:"free",time:"~1 wk",level:"Intermediate",
-    goal:"Orchestrate reliable, stateful, multi-step agents (the framework you'll meet most in the wild).",
-    proj:"Build a stateful agent with branching, memory, and human-in-the-loop.",
-    take:"LangGraph is everywhere in job postings. Learn the concepts; they transfer even if a team uses a different framework."},
-  {t:"aieng",stream:"Agents & agentic engineering",fit:"high",status:"todo",title:"MCP Course (Model Context Protocol)",prov:"Hugging Face × Anthropic",url:"https://huggingface.co/learn/mcp-course",cost:"Free",cType:"free",time:"~1 wk",level:"Intermediate",
-    goal:"Give agents standardized access to tools/data via MCP — the emerging integration standard.",
-    proj:"Build an MCP server exposing a tool; connect an agent to it.",
-    take:"MCP is becoming the USB-C of agent tooling. Knowing it early is a cheap, high-signal edge — and sets up agentic security later."},
-  {t:"aieng",stream:"Agents & agentic engineering",fit:"deep",status:"todo",title:"DSPy: Build and Optimize Agentic Apps",prov:"DeepLearning.AI · Stanford DSPy",url:"https://www.deeplearning.ai/short-courses/dspy-build-optimize-agentic-apps/",cost:"Free",cType:"free",time:"~1–2 hrs",level:"Intermediate→Advanced",
-    goal:"Program LLM apps with signatures + optimizers instead of brittle hand-tuned prompts.",
-    proj:"Build a DSPy program and auto-optimize its prompts against a metric.",
+    goal:"Orchestrate reliable, stateful, multi-step agents (the framework you'll meet most in the wild).",proj:"Build a stateful agent with branching, memory, and human-in-the-loop.",
+    take:"LangGraph shows up constantly in job postings. Learn the concepts; they transfer even if a team uses a different framework."},
+  {t:"aieng",stream:"Agents & agentic engineering",fit:"high",status:"todo",title:"Agent protocols: MCP · A2A · function-calling / OpenAPI",prov:"Anthropic · Linux Foundation · vendors",url:"https://modelcontextprotocol.io/",cost:"Free",cType:"free",time:"~1 wk",level:"Intermediate",
+    goal:"How agents connect to tools, data, and each other: MCP (tools/context), A2A (agent-to-agent), plain function-calling/OpenAPI, and AGENTS.md.",proj:"Expose one tool three ways (function-calling, an MCP server, an OpenAPI spec) and compare.",
+    take:"MCP is one important emerging protocol, not the only one — A2A (now under the Linux Foundation) and plain function-calling matter too. Know the trade-offs rather than betting on a single standard."},
+  {t:"aieng",stream:"Agents & agentic engineering",fit:"deep",status:"todo",title:"DSPy: Build and Optimize Agentic Apps",prov:"DeepLearning.AI · Stanford DSPy",url:"https://www.deeplearning.ai/short-courses/dspy-build-optimize-agentic-apps/",cost:"Videos free · Pro ~$25/mo (labs)",cType:"free",time:"~1–2 hrs",level:"Intermediate→Advanced",
+    goal:"Program LLM apps with signatures + optimizers instead of brittle hand-tuned prompts.",proj:"Build a DSPy program and auto-optimize its prompts against a metric.",
     take:"A more principled, engineering-flavored way to build LLM systems. Adopt once you feel the pain of manual prompt-wrangling."},
-  {t:"aieng",stream:"Agents & agentic engineering",fit:"high",status:"todo",title:"Complete Agentic AI Engineering Masterclass",prov:"Udemy · Ed Donner",url:"https://www.udemy.com/course/agentic-ai-engineering/",cost:"Paid (~$15–90)",cType:"paid",time:"~30+ hrs",level:"Intermediate",
-    goal:"Build agents end-to-end across the major frameworks (OpenAI Agents SDK, CrewAI, LangGraph, AutoGen, MCP).",
-    proj:"A portfolio of agent projects spanning frameworks.",
-    take:"The best-value single paid course for going wide on agentic frameworks fast. Great once you have the fundamentals from the free courses above."},
-  {t:"aieng",stream:"Evals & production",fit:"core",status:"todo",title:"Evals & observability for AI apps",prov:"promptfoo · LangSmith · Hamel Husain's writing",url:"https://www.promptfoo.dev/",cost:"Free",cType:"free",time:"~1 wk",level:"Intermediate",
-    goal:"Measure and monitor real AI systems: test suites, tracing, regression-gating, human review.",
-    proj:"An eval harness + tracing that gates changes to your app/agent.",
-    take:"The single highest-leverage AI-engineering skill. Teams that can eval well ship; most can't. This is your differentiator on the job."},
+  {t:"aieng",stream:"Agents & agentic engineering",fit:"sit",status:"todo",title:"Complete Agentic AI Engineering Masterclass",prov:"Udemy · Ed Donner",url:"https://www.udemy.com/course/agentic-ai-engineering/",cost:"Paid (~$15–90)",cType:"paid",time:"~30+ hrs",level:"Intermediate",
+    goal:"Build agents end-to-end across the major frameworks (OpenAI Agents SDK, CrewAI, LangGraph, AutoGen, MCP).",proj:"A portfolio of agent projects spanning frameworks.",
+    take:"Best-value single paid course for going wide on agentic frameworks fast — after you have the fundamentals from the free courses above."},
+  {t:"aieng",stream:"Platform SDKs & production",fit:"core",status:"todo",title:"OpenAI Agents SDK + Responses API",prov:"OpenAI",url:"https://openai.github.io/openai-agents-python/",cost:"Free / OSS (usage-billed API)",cType:"free",time:"~1 wk",level:"Intermediate",
+    goal:"Build production agents on OpenAI's stack: the Responses API, Agents SDK, built-in tracing, guardrails, and sandboxed execution.",proj:"Ship an agent with tracing + guardrails; inspect runs in the dashboard.",
+    take:"One of the two or three vendor stacks you'll meet most. The tracing/guardrails are the production-grade parts worth learning."},
+  {t:"aieng",stream:"Platform SDKs & production",fit:"high",status:"todo",title:"Claude Agent SDK + Anthropic API",prov:"Anthropic",url:"https://docs.anthropic.com/en/api/agent-sdk/overview",cost:"Free / OSS (usage-billed API)",cType:"free",time:"~1 wk",level:"Intermediate",
+    goal:"Build agents on Anthropic's stack: tools, MCP, subagents, and the same harness that powers Claude Code.",proj:"Build a tool-using agent and give it an MCP server.",
+    take:"Vendor-neutral pairing to the OpenAI SDK; also the most direct bridge into the Coding Agents track."},
+  {t:"aieng",stream:"Platform SDKs & production",fit:"high",status:"todo",title:"Google Agent Development Kit (ADK)",prov:"Google",url:"https://google.github.io/adk-docs/",cost:"Free / OSS",cType:"free",time:"~1 wk",level:"Intermediate",
+    goal:"Build and orchestrate multi-agent systems with Google's ADK (2.0), including native A2A interoperability.",proj:"Build a multi-agent system where agents communicate over A2A.",
+    take:"The third major vendor stack, strong on multi-agent + A2A. Learn one SDK deeply; the concepts port across all three."},
+  {t:"aieng",stream:"Multimodal",fit:"high",status:"todo",title:"Vision-language models (VLMs)",prov:"Hugging Face",url:"https://huggingface.co/learn/computer-vision-course",cost:"Free / OSS",cType:"free",time:"~1–2 wks",level:"Intermediate",
+    goal:"Use and fine-tune models that reason over images + text (captioning, VQA, grounding).",proj:"Build an app that answers questions about images with an open VLM.",
+    take:"The guide's biggest non-text gap. VLMs are now table stakes for many products; the HF course + open VLMs get you productive fast."},
+  {t:"aieng",stream:"Multimodal",fit:"high",status:"todo",title:"Document AI & OCR",prov:"open-source (docTR, Surya, Unstructured)",url:"https://github.com/Unstructured-IO/unstructured",cost:"Free / OSS",cType:"free",time:"~1 wk",level:"Intermediate",
+    goal:"Turn messy PDFs, scans, and forms into structured text for RAG and pipelines.",proj:"Build a doc-ingestion pipeline (OCR → layout → chunk) feeding a RAG app.",
+    take:"Unglamorous but high-demand: most enterprise RAG lives or dies on document extraction quality."},
+  {t:"aieng",stream:"Multimodal",fit:"high",status:"todo",title:"Voice agents (Realtime API + Pipecat/LiveKit)",prov:"OpenAI · Pipecat · LiveKit",url:"https://docs.pipecat.ai/",cost:"Free / OSS (usage-billed)",cType:"free",time:"~1–2 wks",level:"Intermediate",
+    goal:"Build low-latency speech-to-speech agents (barge-in, turn-taking, tool use).",proj:"Ship a real-time voice assistant that can call a tool mid-conversation.",
+    take:"Voice is a fast-growing agent surface; Pipecat/LiveKit + the Realtime API are the common open building blocks."},
+  {t:"aieng",stream:"Multimodal",fit:"deep",status:"todo",title:"Multimodal RAG",prov:"LlamaIndex / practitioner guides",url:"https://docs.llamaindex.ai/",cost:"Free / OSS",cType:"free",time:"~1 wk",level:"Intermediate→Advanced",
+    goal:"Retrieve over images, tables, and text together (e.g., charts and diagrams in PDFs).",proj:"Extend a RAG app to answer questions that require reading a figure or table.",
+    take:"The next step once text RAG is solid — increasingly expected for real document assistants."},
+  {t:"aieng",stream:"Evals & observability",fit:"core",status:"todo",title:"Offline evals: OpenAI Evals + Inspect",prov:"OpenAI · UK AI Safety Institute",url:"https://github.com/openai/evals",cost:"Free / OSS",cType:"free",time:"~1 wk",level:"Intermediate",
+    goal:"Build dataset-based, repeatable evals with graders and scoring that gate changes.",proj:"An offline eval suite (with an LLM-as-judge grader) run in CI.",
+    take:"The foundation of the highest-leverage AI-engineering skill. Inspect (from the UK AISI) is fast becoming a standard harness."},
+  {t:"aieng",stream:"Evals & observability",fit:"high",status:"todo",title:"RAG evals: Ragas",prov:"Ragas (open-source)",url:"https://docs.ragas.io/",cost:"Free / OSS",cType:"free",time:"~2–3 days",level:"Intermediate",
+    goal:"Score retrieval + generation quality (faithfulness, context precision/recall, answer relevancy).",proj:"Add a Ragas eval to your RAG app and track it over changes.",
+    take:"The go-to library for putting numbers on RAG quality — the difference between 'seems fine' and 'measurably better'."},
+  {t:"aieng",stream:"Evals & observability",fit:"high",status:"todo",title:"Agent evals: Evaluating AI Agents",prov:"DeepLearning.AI (+ Inspect for agents)",url:"https://www.deeplearning.ai/short-courses/evaluating-ai-agents/",cost:"Videos free · Pro ~$25/mo (labs)",cType:"free",time:"~2 hrs",level:"Intermediate→Advanced",
+    goal:"Evaluate multi-step agents: task success, tool-use correctness, trajectory analysis.",proj:"Instrument an agent and build a rubric-based eval of its runs.",
+    take:"Agents fail in ways single-turn evals miss; this is how you catch it before users do."},
+  {t:"aieng",stream:"Evals & observability",fit:"core",status:"todo",title:"Production tracing: Langfuse · Phoenix · OpenTelemetry",prov:"Langfuse · Arize Phoenix · OTel GenAI",url:"https://langfuse.com/docs",cost:"Free / OSS",cType:"free",time:"~1 wk",level:"Intermediate",
+    goal:"Trace, monitor, and debug live LLM/agent apps with open standards (OpenTelemetry GenAI semantics).",proj:"Add tracing to an app; build a dashboard of latency, cost, and quality signals.",
+    take:"Offline evals catch regressions before ship; tracing catches what only happens in production. You want both."},
+
+  // ---------- CODING AGENTS ----------
+  {t:"coding",stream:"Using coding agents well",fit:"start",status:"todo",title:"Claude Code in Action",prov:"Anthropic Academy",url:"https://www.anthropic.com/learn",cost:"Free (certified)",cType:"free",time:"~3–4 hrs",level:"Beginner→Intermediate",
+    goal:"Use Claude Code effectively: permissions, memory, subagents, MCP tools, and multi-file changes.",proj:"Complete a multi-file change in a real repo with an agent-generated plan.",
+    take:"First-party and free — the best structured intro to agentic coding. Pair with the MCP/subagents Academy courses."},
+  {t:"coding",stream:"Using coding agents well",fit:"core",status:"todo",title:"Claude Code: A Highly Agentic Coding Assistant",prov:"DeepLearning.AI · Anthropic",url:"https://www.deeplearning.ai/short-courses/claude-code-a-highly-agentic-coding-assistant/",cost:"Videos free · Pro ~$25/mo (labs)",cType:"free",time:"~2 hrs",level:"Intermediate",
+    goal:"Structure work for a coding agent, switch models, and explore/build/refine real codebases.",proj:"Drive an agent through explore → plan → implement → test on an existing codebase.",
+    take:"A concrete, project-based complement to the Academy course — good if you learn best from guided labs."},
+  {t:"coding",stream:"Using coding agents well",fit:"high",status:"todo",title:"Cursor + Aider (agentic IDE & terminal agent)",prov:"Cursor · Aider (open-source)",url:"https://aider.chat/",cost:"Cursor freemium · Aider free/OSS",cType:"free",time:"~1 wk",level:"Beginner→Intermediate",
+    goal:"Drive the two most-used non-Claude coding tools: Cursor (agentic IDE) and Aider (open-source terminal agent).",proj:"Ship a feature via Cursor; use Aider to refactor a repo from the terminal.",
+    take:"Worth using both hands-on — they cover different workflows, and Aider is open-source with its own Polyglot leaderboard."},
+  {t:"coding",stream:"Using coding agents well",fit:"sit",status:"todo",title:"The Complete AI Coding Course (Cursor, Claude Code)",prov:"Udemy",url:"https://www.udemy.com/",cost:"Paid (~$15–90)",cType:"paid",time:"~15+ hrs",level:"Beginner→Intermediate",
+    goal:"A guided, ship-focused walkthrough of building full-stack apps with coding agents.",proj:"Build and ship a full-stack app largely via agents.",
+    take:"Optional. Fine if you want one structured video path; the free first-party material covers most of it. Confirm the current course/instructor before buying."},
+  {t:"coding",stream:"Context & safe execution",fit:"high",status:"todo",title:"Context & spec engineering (AGENTS.md, repo context)",prov:"Agentic AI Foundation (Linux Foundation) + vendor docs",url:"https://agents.md/",cost:"Free",cType:"free",time:"~2–3 days",level:"Intermediate",
+    goal:"Structure a repo so agents work well: AGENTS.md, specs, tests, guardrails, and scoped context.",proj:"Add AGENTS.md + a spec + tests to a repo, then have an agent implement to spec.",
+    take:"The practice layer that separates useful agents from chaos — spec-driven, context-first development is where the real leverage is."},
+  {t:"coding",stream:"Context & safe execution",fit:"high",status:"todo",title:"Sandboxed tool execution for coding agents",prov:"OpenAI Agents SDK · containers · practitioner guides",url:"https://openai.github.io/openai-agents-python/",cost:"Free / OSS",cType:"free",time:"~3–5 days",level:"Intermediate→Advanced",
+    goal:"Run agent-generated code and shell commands safely (sandboxes, containers, permission scoping).",proj:"Give a small agent a sandboxed shell with allow-listed commands and resource limits.",
+    take:"The safety-critical part of building coding agents — and a natural bridge to the Security track's agent-abuse work."},
+  {t:"coding",stream:"Evals & benchmarks",fit:"core",status:"todo",title:"SWE-bench / SWE-bench Verified",prov:"Princeton (with OpenAI-verified subset)",url:"https://www.swebench.com/",cost:"Free / OSS",cType:"free",time:"~1 wk",level:"Intermediate→Advanced",
+    goal:"Understand how coding agents are measured: resolve real GitHub issues with passing tests.",proj:"Run a small SWE-bench-style eval on an agent and read the transcripts.",
+    take:"The standard coding-agent benchmark. Knowing how it works lets you cut through leaderboard hype and evaluate your own agents."},
+  {t:"coding",stream:"Evals & benchmarks",fit:"high",status:"todo",title:"Terminal-Bench + Aider Polyglot",prov:"Terminal-Bench · Aider",url:"https://www.tbench.ai/",cost:"Free / OSS",cType:"free",time:"~3–5 days",level:"Intermediate→Advanced",
+    goal:"Complementary benchmarks: terminal/command-line tasks and multi-language code edits.",proj:"Score an agent on one of them; compare against its SWE-bench result.",
+    take:"No single benchmark captures coding-agent ability — triangulate across a few before trusting a headline number."},
 
   // ---------- BUILD & FINE-TUNE ----------
-  {t:"build",fit:"core",status:"todo",title:"Hugging Face LLM Course",prov:"Hugging Face",url:"https://huggingface.co/learn/llm-course",cost:"Free",cType:"free",time:"~20–30 hrs",level:"Beginner→Intermediate",
-    goal:"Master the practical stack: transformers, datasets, fine-tuning, and sharing models.",
-    proj:"Fine-tune and publish your own model to the Hub.",
+  {t:"build",stream:"Build LLMs from scratch",fit:"core",status:"todo",title:"Hugging Face LLM Course",prov:"Hugging Face",url:"https://huggingface.co/learn/llm-course",cost:"Free",cType:"free",time:"~20–30 hrs",level:"Beginner→Intermediate",
+    goal:"Master the practical stack: transformers, datasets, fine-tuning, and sharing models.",proj:"Fine-tune and publish your own model to the Hub.",
     take:"The standard practical toolkit — do this early. Almost every applied job uses this exact library surface."},
-  {t:"build",fit:"high",status:"todo",title:"Unsloth (fine-tuning notebooks)",prov:"Unsloth",url:"https://docs.unsloth.ai/",cost:"Free",cType:"free",time:"~1 wknd",level:"Beginner→Intermediate",
-    goal:"Fast, cheap LoRA/QLoRA fine-tuning on a single (even free Colab) GPU.",
-    proj:"Fine-tune a small model on your own dataset this weekend.",
-    take:"The quickest path from 'reading about fine-tuning' to 'I fine-tuned a model.' Huge motivation payoff for little setup."},
-  {t:"build",fit:"core",status:"todo",title:"Post-training of LLMs (SFT · DPO · RL)",prov:"DeepLearning.AI",url:"https://www.deeplearning.ai/courses/",cost:"Paid (~$49/mo)",cType:"paid",time:"~2–3 hrs each",level:"Intermediate",
-    goal:"Hands-on SFT, DPO, online RL, and GRPO — the modern post-training workflow.",
-    proj:"Post-train a model toward a target behavior; measure the change.",
-    take:"Short, current, exactly the workflow teams use in 2025–26. 'Intro to Post-training' and the GRPO course are the sweet spot."},
-  {t:"build",fit:"core",status:"todo",title:"Build a Large Language Model (From Scratch)",prov:"Sebastian Raschka (book + repo)",url:"https://github.com/rasbt/LLMs-from-scratch",cost:"Paid (~$50) · repo free",cType:"paid",time:"~1 mo",level:"Intermediate",
-    goal:"Code a GPT-style LLM end-to-end in PyTorch, with clear explanations at every step.",
-    proj:"Your own working LLM: attention, pretraining, and fine-tuning.",
-    take:"The most methodical from-scratch build in print. The reference text for this track; the repo alone is worth it before buying."},
-  {t:"build",fit:"high",status:"todo",title:"nanochat",prov:"Andrej Karpathy",url:"https://github.com/karpathy/nanochat",cost:"Free",cType:"free",time:"~1–2 wks",level:"Intermediate",
-    goal:"Train a full ChatGPT-style model (pretrain→SFT→RL→serve) for ~$100 of compute.",
-    proj:"Your own end-to-end mini-ChatGPT with a web UI.",
-    take:"The most satisfying full-stack build available (Oct 2025). Do it after Zero-to-Hero — it ties the whole pipeline together."},
-  {t:"build",fit:"high",status:"todo",title:"LLM Course (roadmap + notebooks)",prov:"Maxime Labonne (GitHub)",url:"https://github.com/mlabonne/llm-course",cost:"Free",cType:"free",time:"Self-paced",level:"Intermediate",
-    goal:"A curated 'LLM Scientist' + 'LLM Engineer' roadmap with runnable Colabs.",
-    proj:"Fine-tune, quantize, and deploy models following the notebooks.",
-    take:"An excellent free map of the whole space — use it as the index that ties your other courses together."},
-  {t:"build",fit:"core",status:"todo",title:"Model evals: promptfoo + 'Mastering LLMs'",prov:"promptfoo · Hamel Husain / Dan Becker",url:"https://hamel.dev/blog/posts/evals/",cost:"Free",cType:"free",time:"~1 wk",level:"Intermediate",
-    goal:"Build real evaluation suites for your fine-tunes — the actual bottleneck in shipping.",
-    proj:"An eval harness that gates changes to your model.",
-    take:"The most underrated, highest-leverage skill in model work. If you can't measure it, you can't improve it."},
-  {t:"build",fit:"deep",status:"todo",title:"CS336: Language Modeling from Scratch",prov:"Stanford (2025) · free lectures",url:"https://github.com/stanford-cs336",cost:"Free",cType:"free",time:"~40+ hrs",level:"Advanced",
-    goal:"Build an LLM end-to-end incl. systems, scaling laws, data, and alignment under compute limits.",
-    proj:"Tokenizer → transformer → training → scaling → SFT/DPO, all hand-built.",
-    take:"Widely called the best advanced LLM course online — but it assumes solid ML + PyTorch. Save it for after Foundations; it also serves Infra and Research."},
+  {t:"build",stream:"Build LLMs from scratch",fit:"core",status:"todo",title:"Build a Large Language Model (From Scratch)",prov:"Sebastian Raschka (book + repo)",url:"https://github.com/rasbt/LLMs-from-scratch",cost:"Paid (~$50) · repo free",cType:"paid",time:"~1 mo",level:"Intermediate",
+    goal:"Code a GPT-style LLM end-to-end in PyTorch, explained at every step.",proj:"Your own working LLM: attention, pretraining, and fine-tuning.",
+    take:"The most methodical from-scratch build in print; the repo alone is worth it before buying."},
+  {t:"build",stream:"Build LLMs from scratch",fit:"high",status:"todo",title:"nanochat",prov:"Andrej Karpathy",url:"https://github.com/karpathy/nanochat",cost:"Free / OSS",cType:"free",time:"~1–2 wks",level:"Intermediate",
+    goal:"Train a full ChatGPT-style model (pretrain → SFT → RL → serve) for ~$100 of compute.",proj:"Your own end-to-end mini-ChatGPT with a web UI.",
+    take:"The most satisfying full-stack build available. Do it after Zero-to-Hero — it ties the whole pipeline together."},
+  {t:"build",stream:"Build LLMs from scratch",fit:"deep",status:"todo",title:"CS336: Language Modeling from Scratch",prov:"Stanford (2025) · free lectures",url:"https://stanford-cs336.github.io/spring2025/",cost:"Free",cType:"free",time:"~40+ hrs",level:"Advanced",
+    goal:"Build an LLM end-to-end incl. systems, scaling laws, data, and alignment under compute limits.",proj:"Tokenizer → transformer → training → scaling → SFT/DPO, hand-built.",
+    take:"Widely called the best advanced LLM course online — but it assumes solid ML + PyTorch. Save it for after Foundations."},
+  {t:"build",stream:"Fine-tuning & post-training",fit:"high",status:"todo",title:"Unsloth (fine-tuning notebooks)",prov:"Unsloth",url:"https://docs.unsloth.ai/",cost:"Free / OSS",cType:"free",time:"~1 wknd",level:"Beginner→Intermediate",
+    goal:"Fast, cheap LoRA/QLoRA fine-tuning on a single (even free Colab) GPU.",proj:"Fine-tune a small model on your own dataset this weekend.",
+    take:"The quickest path from 'reading about fine-tuning' to 'I fine-tuned a model.' Big motivation payoff for little setup."},
+  {t:"build",stream:"Fine-tuning & post-training",fit:"core",status:"todo",title:"Post-training of LLMs (SFT · DPO · online RL/GRPO)",prov:"DeepLearning.AI",url:"https://www.deeplearning.ai/courses/",cost:"Videos free · Pro ~$25/mo (labs)",cType:"free",time:"~2–3 hrs each",level:"Intermediate",
+    goal:"Hands-on SFT, DPO, online RL, and GRPO — the modern post-training workflow.",proj:"Post-train a model toward a target behavior; measure the change.",
+    take:"Short, current, exactly the workflow teams use now. The 'Intro to Post-training' and GRPO courses are the sweet spot."},
+  {t:"build",stream:"Fine-tuning & post-training",fit:"high",status:"todo",title:"TRL — Transformer Reinforcement Learning",prov:"Hugging Face (open-source)",url:"https://huggingface.co/docs/trl",cost:"Free / OSS",cType:"free",time:"~1–2 wks",level:"Intermediate→Advanced",
+    goal:"The standard library for SFT, reward modeling, DPO/ORPO, and GRPO/PPO at scale.",proj:"Reproduce a DPO or GRPO run on a small model with TRL.",
+    take:"The production tool behind most open post-training. Learn it once you're past notebook-level fine-tuning."},
+  {t:"build",stream:"Fine-tuning & post-training",fit:"high",status:"todo",title:"LLM Course (roadmap + notebooks)",prov:"Maxime Labonne (GitHub)",url:"https://github.com/mlabonne/llm-course",cost:"Free / OSS",cType:"free",time:"Self-paced",level:"Intermediate",
+    goal:"A curated 'LLM Scientist' + 'LLM Engineer' roadmap with runnable Colabs.",proj:"Fine-tune, quantize, and deploy models following the notebooks.",
+    take:"An excellent free map of the whole space — use it as the index that ties your other resources together."},
+  {t:"build",stream:"Data quality & governance",fit:"core",status:"todo",title:"Data curation & synthetic/preference data",prov:"Distilabel · Argilla · TRL",url:"https://distilabel.argilla.io/",cost:"Free / OSS",cType:"free",time:"~1–2 wks",level:"Intermediate",
+    goal:"Build high-quality SFT/preference datasets: dedup, quality filtering, and synthetic generation.",proj:"Generate + filter a small preference dataset and fine-tune on it.",
+    take:"The highest-leverage part of fine-tuning. Most 'the model won't improve' problems are data problems."},
+  {t:"build",stream:"Data quality & governance",fit:"high",status:"todo",title:"Licensing, model cards & data cards",prov:"Hugging Face · Model Cards / Datasheets",url:"https://huggingface.co/docs/hub/model-cards",cost:"Free",cType:"free",time:"~2–3 days",level:"Any",
+    goal:"Document models and data responsibly: licenses, intended use, limitations, provenance.",proj:"Write a complete model card + data card for a fine-tune you shipped.",
+    take:"The professional-credibility layer. It's also increasingly a compliance requirement, not a nicety."},
+  {t:"build",stream:"Data quality & governance",fit:"deep",status:"todo",title:"Benchmark contamination checks",prov:"practitioner tools & papers",url:"https://github.com/swj0419/detect-pretrain-code-contamination",cost:"Free / OSS",cType:"free",time:"~2–3 days",level:"Advanced",
+    goal:"Detect train/test contamination so your eval numbers mean something.",proj:"Run a contamination check between your data and an eval set; report overlap.",
+    take:"Underrated. A contaminated eval makes a bad model look great — this is how you avoid fooling yourself."},
+  {t:"build",stream:"Evals",fit:"core",status:"todo",title:"Model evals: promptfoo + 'Mastering LLMs'",prov:"promptfoo · Hamel Husain / Dan Becker",url:"https://hamel.dev/blog/posts/evals/",cost:"Free / OSS",cType:"free",time:"~1 wk",level:"Intermediate",
+    goal:"Build real evaluation suites for your fine-tunes — the actual bottleneck in shipping.",proj:"An eval harness that gates changes to your model.",
+    take:"If you can't measure it, you can't improve it. Underrated and high-leverage in model work."},
 
   // ---------- INFRA & MLOPS ----------
   {t:"infra",stream:"MLOps (production ML lifecycle)",fit:"core",status:"todo",title:"Designing Machine Learning Systems",prov:"Chip Huyen (book)",url:"https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/",cost:"Paid (~$50)",cType:"paid",time:"~3 wks",level:"Intermediate",
-    goal:"How to design reliable, maintainable ML systems end-to-end (data, deployment, monitoring, iteration).",
-    proj:"Architect an ML system with data + serving + monitoring on paper.",
-    take:"The modern classic for ML systems thinking. Pairs with her AI-Engineering book (LLM-era) for full coverage."},
+    goal:"Design reliable, maintainable ML systems end-to-end (data, deployment, monitoring, iteration).",proj:"Architect an ML system with data + serving + monitoring on paper.",
+    take:"The modern classic for ML systems thinking. Pairs with her AI-Engineering book for full coverage."},
   {t:"infra",stream:"MLOps (production ML lifecycle)",fit:"high",status:"todo",title:"Made With ML",prov:"Goku Mohandas",url:"https://madewithml.com/",cost:"Free",cType:"free",time:"~3–4 wks",level:"Intermediate",
-    goal:"Design → develop → deploy → monitor a production ML system the right way.",
-    proj:"An end-to-end ML pipeline with testing, CI, and monitoring.",
-    take:"Excellent, engineer-grade MLOps foundations. Maps your software-delivery instincts onto ML."},
-  {t:"infra",stream:"MLOps (production ML lifecycle)",fit:"high",status:"todo",title:"MLOps Zoomcamp",prov:"DataTalks.Club",url:"https://github.com/DataTalksClub/mlops-zoomcamp",cost:"Free",cType:"free",time:"~9 wks",level:"Intermediate",
-    goal:"Hands-on, project-driven MLOps: experiment tracking, pipelines, deployment, monitoring.",
-    proj:"Deploy and monitor a model as a capstone.",
-    take:"Free and genuinely practical. Great structured complement to Made With ML if you like cohort-style project work."},
-  {t:"infra",stream:"LLMOps & serving",fit:"high",status:"todo",title:"LLMOps",prov:"DeepLearning.AI · Google Cloud",url:"https://www.deeplearning.ai/short-courses/llmops/",cost:"Free",cType:"free",time:"~1.5 hrs",level:"Intermediate",
-    goal:"Operationalize LLMs: pipelines, prompt/version management, deployment, and monitoring.",
-    proj:"Build an LLMOps pipeline that versions and deploys prompts/models.",
-    take:"The LLM-specific ops layer on top of classic MLOps. Short and directly job-relevant."},
-  {t:"infra",stream:"LLMOps & serving",fit:"high",status:"todo",title:"Efficiently Serving LLMs (+ vLLM)",prov:"DeepLearning.AI · Predibase",url:"https://www.deeplearning.ai/short-courses/efficiently-serving-llms/",cost:"Free",cType:"free",time:"~2 hrs",level:"Intermediate",
-    goal:"Serve LLMs with batching, KV-cache, and quantization for real throughput.",
-    proj:"Stand up a high-throughput inference server (e.g., with vLLM).",
-    take:"Inference/serving is where a lot of production pain — and hiring — lives right now. Very employable."},
-  {t:"infra",stream:"GPU & systems",fit:"high",status:"todo",title:"GPU MODE (lectures + community)",prov:"GPU MODE",url:"https://github.com/gpu-mode/lectures",cost:"Free",cType:"free",time:"Ongoing",level:"Intermediate→Advanced",
-    goal:"Learn GPU / CUDA / Triton kernel programming and performance work.",
-    proj:"Write and profile your own CUDA/Triton kernels; optimize a real op.",
+    goal:"Design → develop → deploy → monitor a production ML system the right way.",proj:"An end-to-end ML pipeline with testing, CI, and monitoring.",
+    take:"Excellent, engineer-grade MLOps foundations that map standard software-delivery practices onto ML."},
+  {t:"infra",stream:"MLOps (production ML lifecycle)",fit:"high",status:"todo",title:"MLOps Zoomcamp",prov:"DataTalksClub",url:"https://github.com/DataTalksClub/mlops-zoomcamp",cost:"Free",cType:"free",time:"~9 wks",level:"Intermediate",
+    goal:"Hands-on MLOps: experiment tracking, pipelines, deployment, monitoring.",proj:"Deploy and monitor a model as a capstone.",
+    take:"Free and genuinely practical — a good structured complement to Made With ML."},
+  {t:"infra",stream:"LLMOps & serving",fit:"high",status:"todo",title:"LLMOps",prov:"DeepLearning.AI · Google Cloud",url:"https://www.deeplearning.ai/short-courses/llmops/",cost:"Videos free · Pro ~$25/mo (labs)",cType:"free",time:"~1.5 hrs",level:"Intermediate",
+    goal:"Operationalize LLMs: pipelines, prompt/version management, deployment, monitoring.",proj:"Build an LLMOps pipeline that versions and deploys prompts/models.",
+    take:"The LLM-specific ops layer on top of classic MLOps. Short and job-relevant."},
+  {t:"infra",stream:"LLMOps & serving",fit:"core",status:"todo",title:"High-throughput serving: vLLM + SGLang",prov:"vLLM · SGLang (open-source)",url:"https://docs.vllm.ai/",cost:"Free / OSS",cType:"free",time:"~1–2 wks",level:"Intermediate→Advanced",
+    goal:"Serve LLMs efficiently: paged attention/KV-cache (vLLM) and fast structured/agent workloads (SGLang).",proj:"Benchmark vLLM vs SGLang on the same model; tune batching and quantization.",
+    take:"The two open serving engines you'll actually deploy. Inference is where much of production cost and hiring lives."},
+  {t:"infra",stream:"LLMOps & serving",fit:"high",status:"todo",title:"Local inference: Ollama + llama.cpp",prov:"Ollama · llama.cpp (open-source)",url:"https://github.com/ggml-org/llama.cpp",cost:"Free / OSS",cType:"free",time:"~3–5 days",level:"Beginner→Intermediate",
+    goal:"Run quantized models locally/on-device for privacy, cost, and offline use.",proj:"Run a quantized model locally and wire it into an app.",
+    take:"Local-first is a real deployment mode (privacy, cost, edge). Ollama is the easy front door; llama.cpp is the engine."},
+  {t:"infra",stream:"LLMOps & serving",fit:"high",status:"todo",title:"LiteLLM (gateway, routing, cost control)",prov:"LiteLLM (open-source)",url:"https://docs.litellm.ai/",cost:"Free / OSS",cType:"free",time:"~2–3 days",level:"Intermediate",
+    goal:"One OpenAI-compatible interface across 100+ providers, with routing, fallbacks, budgets, and logging.",proj:"Put a gateway in front of two providers with fallback and per-key budgets.",
+    take:"The pragmatic glue for real deployments — avoids vendor lock-in and makes cost/routing manageable."},
+  {t:"infra",stream:"GPU & systems",fit:"high",status:"todo",title:"GPU MODE (lectures + community)",prov:"GPU MODE",url:"https://github.com/gpu-mode/lectures",cost:"Free / OSS",cType:"free",time:"Ongoing",level:"Intermediate→Advanced",
+    goal:"Learn GPU / CUDA / Triton kernel programming and performance work.",proj:"Write and profile your own CUDA/Triton kernels; optimize a real op.",
     take:"The go-to community for GPU performance — a durable, hard-to-hire-for edge. Lean in if systems excite you."},
   {t:"infra",stream:"GPU & systems",fit:"deep",status:"todo",title:"Programming Massively Parallel Processors (PMPP)",prov:"Hwu, Kirk, El Hajj (book)",url:"https://shop.elsevier.com/books/programming-massively-parallel-processors/hwu/978-0-323-91231-0",cost:"Paid (~$60)",cType:"paid",time:"~1 mo",level:"Advanced",
-    goal:"Learn CUDA and parallel-programming fundamentals properly.",
-    proj:"Implement and benchmark parallel kernels.",
-    take:"The CUDA 'bible.' Pair with GPU MODE — the book gives rigor, the community gives momentum and modern practice."},
+    goal:"Learn CUDA and parallel-programming fundamentals properly.",proj:"Implement and benchmark parallel kernels.",
+    take:"The CUDA 'bible.' Pair with GPU MODE — the book gives rigor, the community gives momentum."},
   {t:"infra",stream:"Distributed training & scaling",fit:"deep",status:"todo",title:"The Ultra-Scale Playbook",prov:"Hugging Face (2025)",url:"https://huggingface.co/spaces/nanotron/ultrascale-playbook",cost:"Free",cType:"free",time:"~1–2 wks",level:"Advanced",
-    goal:"Train LLMs across GPU clusters: data/tensor/pipeline parallelism, memory, comms.",
-    proj:"Reproduce scaling experiments; reason about a multi-GPU training budget.",
-    take:"The best free deep-dive on distributed training (built from 4,000+ experiments on 512 GPUs). Advanced — do once single-GPU training is comfortable."},
-  {t:"infra",stream:"Distributed training & scaling",fit:"deep",status:"todo",title:"CS336 (systems, parallelism, kernels)",prov:"Stanford (2025)",url:"https://github.com/stanford-cs336",cost:"Free",cType:"free",time:"part of course",level:"Advanced",
-    goal:"The systems half of building LLMs: Triton kernels, parallelism strategies, efficient training/inference.",
-    proj:"Implement kernels and parallel training as course assignments.",
-    take:"If you go deep on training infra, CS336's systems lectures are gold. Cross-listed with Build & Research."},
+    goal:"Train LLMs across GPU clusters: data/tensor/pipeline parallelism, memory, comms.",proj:"Reason about a multi-GPU training budget; reproduce a scaling experiment.",
+    take:"The best free deep-dive on distributed training (from 4,000+ experiments on 512 GPUs). Do it once single-GPU training is comfortable."},
+  {t:"infra",stream:"Distributed training & scaling",fit:"deep",status:"todo",title:"CS336 (systems, parallelism, kernels)",prov:"Stanford (2025)",url:"https://stanford-cs336.github.io/spring2025/",cost:"Free",cType:"free",time:"part of course",level:"Advanced",
+    goal:"The systems half of building LLMs: Triton kernels, parallelism strategies, efficient training/inference.",proj:"Implement kernels and parallel training as course assignments.",
+    take:"If you go deep on training infra, CS336's systems lectures are gold. Cross-listed with Build and Research."},
 
   // ---------- RESEARCH ----------
   {t:"research",fit:"high",status:"todo",title:"CS231n: Deep Learning for Computer Vision",prov:"Stanford · free lectures/notes",url:"https://cs231n.stanford.edu/",cost:"Free",cType:"free",time:"~40 hrs",level:"Intermediate",
-    goal:"Rigorous DL fundamentals — backprop, optimization, architectures — taught unusually well.",
-    proj:"Implement layers and train networks (some from scratch).",
+    goal:"Rigorous DL fundamentals — backprop, optimization, architectures — taught unusually well.",proj:"Implement layers and train networks (some from scratch).",
     take:"Gold-standard fundamentals even if you never touch vision. The assignments build durable understanding."},
   {t:"research",fit:"core",status:"todo",title:"CS224n: NLP with Deep Learning",prov:"Stanford · free lectures/notes",url:"https://web.stanford.edu/class/cs224n/",cost:"Free",cType:"free",time:"~40 hrs",level:"Intermediate",
-    goal:"The NLP → transformers lineage that modern LLMs are built on.",
-    proj:"Assignments culminating in transformer-based models.",
+    goal:"The NLP → transformers lineage that modern LLMs are built on.",proj:"Assignments culminating in transformer-based models.",
     take:"Essential conceptual grounding for serious LLM research. Pairs well with Karpathy's from-scratch builds."},
   {t:"research",fit:"high",status:"todo",title:"ARENA (Alignment Research Engineer Accelerator)",prov:"ARENA · free curriculum",url:"https://www.arena.education/",cost:"Free (curriculum)",cType:"free",time:"~4–5 wks",level:"Intermediate→Advanced",
-    goal:"Become a research engineer: implement transformers, interpretability, RL, and evals.",
-    proj:"A sequence of hands-on ML-research exercises with real code.",
-    take:"The most concrete 'how to actually become a research engineer' curriculum — and it bridges straight into safety and red-teaming. Your best realistic research on-ramp."},
+    goal:"Become a research engineer: implement transformers, interpretability, RL, and evals.",proj:"A sequence of hands-on ML-research exercises with real code.",
+    take:"The most concrete 'how to actually become a research engineer' curriculum — and it bridges into safety and red-teaming. Your best realistic research on-ramp."},
   {t:"research",fit:"deep",status:"todo",title:"Mechanistic Interpretability (getting started)",prov:"Neel Nanda",url:"https://www.neelnanda.io/mechanistic-interpretability/getting-started",cost:"Free",cType:"free",time:"Self-paced",level:"Intermediate→Advanced",
-    goal:"Reverse-engineer what's happening inside models.",
-    proj:"Interpretability experiments in TransformerLens; try to explain a circuit.",
-    take:"A rare research area with a low barrier to a real contribution — and a genuine superpower for finding model-level vulnerabilities (ties back to security)."},
+    goal:"Reverse-engineer what's happening inside models.",proj:"Interpretability experiments in TransformerLens; try to explain a circuit.",
+    take:"A rare research area with a low barrier to a real contribution — and a superpower for finding model-level vulnerabilities."},
   {t:"research",fit:"core",status:"todo",title:"Read + reproduce papers (the core loop)",prov:"arXiv · Papers with Code · nanoGPT",url:"https://paperswithcode.com/",cost:"Free",cType:"free",time:"Ongoing habit",level:"Intermediate",
-    goal:"Build the researcher's daily loop: read critically, then reproduce.",
-    proj:"Reproduce a paper (start by re-deriving/extending nanoGPT).",
+    goal:"Build the researcher's daily loop: read critically, then reproduce.",proj:"Reproduce a paper (start by re-deriving/extending nanoGPT).",
     take:"Research is 80% reading and reproducing. Start this habit early — it compounds more than any single course."},
-  {t:"research",fit:"deep",status:"todo",title:"Spinning Up in Deep RL",prov:"OpenAI",url:"https://spinningup.openai.com/",cost:"Free",cType:"free",time:"~2–3 wks",level:"Advanced",
-    goal:"Understand the RL that underlies RLHF / RLVR post-training.",
-    proj:"Implement core algorithms (e.g., PPO) from the provided scaffolding.",
-    take:"Reach for it when you hit RLHF/GRPO and want to really understand it — not a day-one requirement."}
+  {t:"research",fit:"deep",status:"todo",title:"Spinning Up in Deep RL (classic RL foundations)",prov:"OpenAI",url:"https://spinningup.openai.com/",cost:"Free",cType:"free",time:"~2–3 wks",level:"Advanced",
+    goal:"The classic deep-RL fundamentals (2018) — policy gradients, PPO — underneath modern methods.",proj:"Implement core algorithms (e.g., PPO) from the provided scaffolding.",
+    take:"Historical foundations, still clarifying. For modern LLM RL (RLHF/RLVR/GRPO), use the Build track's post-training + TRL resources."}
 ];
 
 const fitMeta = {start:{c:"b-start",label:"Start here",w:0},core:{c:"b-core",label:"Core",w:1},high:{c:"b-high",label:"High value",w:2},deep:{c:"b-deep",label:"Go deeper",w:3},sit:{c:"b-sit",label:"Situational",w:4}};
 const statusLabel = {todo:"To do",doing:"Doing",done:"Done"};
 const nextStatus = {todo:"doing",doing:"done",done:"todo"};
-const order = ["foundations","security","aieng","build","infra","research"];
+const order = ["foundations","security","aieng","coding","build","infra","research"];
 
-const ptypeLabel = {build:"Personal build",oss:"Open-source",demo:"Demo & write-up",port:"Portfolio"};
-const PROJECTS = {
-  foundations:[
-    {type:"build",title:"Retrain nanoGPT on a corpus you own",blurb:"Use Karpathy's nanoGPT to train a small GPT on text you care about (your notes, a codebase, security advisories) and sample from it.",proves:"You can run the full training loop end-to-end and understand tokenization, loss, and sampling."},
-    {type:"demo",title:"Rebuild micrograd + a tiny MLP",blurb:"Reimplement a scalar autograd engine and train a small net on a toy dataset; write up how backprop flows.",proves:"You truly understand gradients and backprop — not just calling .fit()."}
-  ],
-  security:[
-    {type:"port",title:"LLM vuln report on an open app",blurb:"Run garak + manual testing against an open-source LLM app; write a professional report mapped to OWASP LLM Top 10 and MITRE ATLAS.",proves:"Real red-team methodology and client-grade reporting."},
-    {type:"oss",title:"Ship a garak or PyRIT probe",blurb:"Contribute a new probe/detector to garak or an attack module to PyRIT.",proves:"You can extend production red-team tooling — visible OSS credibility."},
-    {type:"port",title:"Break-and-fix an agent",blurb:"Take an agent you built in the AI Engineer track, exploit it (tool abuse, indirect prompt injection via poisoned docs), then ship mitigations and document both sides.",proves:"End-to-end attacker + defender on the agentic surface — a scarce, premium skill."}
-  ],
-  aieng:[
-    {type:"port",title:"RAG assistant with a real eval suite",blurb:"Build a RAG app over a corpus you know, plus an eval harness (retrieval + answer metrics) and request tracing.",proves:"You ship reliable RAG, not a demo — the evals are the differentiator recruiters look for."},
-    {type:"build",title:"Multi-agent workflow over MCP tools",blurb:"Build a LangGraph agent that uses 2–3 MCP tools to finish a real task (e.g., triage GitHub issues or summarize a repo).",proves:"Agentic engineering plus MCP integration — the current hiring sweet spot."},
-    {type:"oss",title:"Publish an MCP server",blurb:"Wrap a useful API or tool as an open-source MCP server others can plug into.",proves:"Command of the emerging agent-tooling standard; high-signal public work."}
-  ],
-  build:[
-    {type:"port",title:"Fine-tune a model + publish a model card",blurb:"LoRA/QLoRA fine-tune (Unsloth) on a focused dataset, publish to the HF Hub with a model card and eval numbers.",proves:"End-to-end fine-tuning with honest evaluation."},
-    {type:"build",title:"Apply DPO or GRPO to change a behavior",blurb:"Post-train a base model with DPO/GRPO to shift a measurable behavior; document before/after metrics.",proves:"Modern post-training (not just SFT) — what teams actually do now."},
-    {type:"demo",title:"Train a mini-ChatGPT (nanochat) and write it up",blurb:"Run Karpathy's nanochat (~$100) through pretrain→SFT→RL→serve and blog the full pipeline.",proves:"Full-stack model building from data to a chat UI."}
-  ],
-  infra:[
-    {type:"port",title:"Deploy + monitor an LLM inference service",blurb:"Stand up vLLM with batching and quantization; add latency/throughput dashboards and autoscaling.",proves:"Production LLMOps/serving in real operational terms."},
-    {type:"oss",title:"Write and benchmark a CUDA/Triton kernel",blurb:"Implement a fused kernel (e.g., a norm or attention step), benchmark vs baseline, and share it (GPU MODE community).",proves:"Rare GPU-performance skill that very few candidates have."},
-    {type:"port",title:"End-to-end MLOps pipeline",blurb:"Build the Made With ML / Zoomcamp capstone: data → train → deploy → monitor with CI.",proves:"You can operate ML in production, not just train it."}
-  ],
-  research:[
-    {type:"port",title:"Reproduce a recent paper",blurb:"Pick a tractable paper, reproduce a key result, and publish the repo plus a short report on what matched and what didn't.",proves:"The core research-engineer skill: turning a paper into working, verified code."},
-    {type:"oss",title:"Mechanistic-interpretability mini-investigation",blurb:"Use TransformerLens to find and explain a small circuit or feature; write it up (blog/LessWrong).",proves:"Genuine research ability — and it doubles as model-level security insight."},
-    {type:"demo",title:"ARENA capstone extension",blurb:"Complete an ARENA chapter and extend one exercise into a small original experiment.",proves:"Research-engineer readiness with a concrete artifact to show."}
-  ]
-};
+// --- safety helpers ---
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+function safeUrl(u){u=String(u==null?"":u).trim();return /^https?:\/\//i.test(u)?u:"#";}
+
+// --- progress persistence (feature-detected; no-ops where unavailable, e.g. sandboxed viewers) ---
+const LSKEY="allp_progress_v1";
+function loadProg(){try{return JSON.parse(localStorage.getItem(LSKEY)||"{}")||{};}catch(e){return {};}}
+function saveProg(m){try{localStorage.setItem(LSKEY,JSON.stringify(m));}catch(e){}}
+let PROG=loadProg();
 
 const tracksEl = document.getElementById("tracks");
 
 function makeCard(c){
   const f=fitMeta[c.fit];
-  const st=c.status||"todo";
+  const st=PROG[c.title]||c.status||"todo";
   const card=document.createElement("div");
   card.className="card";
   card.dataset.cost=c.cType;
   card.dataset.status=st;
+  card.dataset.key=c.title;
   card.dataset.text=(c.title+" "+c.prov+" "+(c.stream||"")+" "+c.goal+" "+c.proj+" "+c.take).toLowerCase();
-  card.innerHTML=`
-    <div class="badges">
-      <span class="badge ${f.c}">${f.label}</span>
-      <span class="chip ${c.cType}">${c.cost}</span>
-      <button class="status" data-status="${st}" title="Click to change (view-only)">${statusLabel[st]}</button>
-    </div>
-    <h4><a href="${c.url}" target="_blank" rel="noopener">${c.title}</a></h4>
-    <p class="prov">${c.prov}</p>
-    <p class="kv"><span class="lab">Goal:</span> ${c.goal}</p>
-    <p class="kv"><span class="lab">You build:</span> ${c.proj}</p>
-    <div class="take"><span class="lab">The honest take:</span> ${c.take}</div>
-    <p class="metaline"><span class="chip">${c.time}</span><span class="chip">${c.level}</span></p>`;
+  card.innerHTML=
+    '<div class="badges">'+
+      '<span class="badge '+f.c+'">'+esc(f.label)+'</span>'+
+      '<span class="chip '+(c.cType==="paid"?"paid":"free")+'">'+esc(c.cost)+'</span>'+
+      '<button type="button" class="status" data-status="'+st+'" aria-label="Progress: '+esc(statusLabel[st])+'. Click to change." title="Click to change (saved in your browser)">'+esc(statusLabel[st])+'</button>'+
+    '</div>'+
+    '<h4><a href="'+esc(safeUrl(c.url))+'" target="_blank" rel="noopener noreferrer">'+esc(c.title)+'</a></h4>'+
+    '<p class="prov">'+esc(c.prov)+'</p>'+
+    '<p class="kv"><span class="lab">Goal:</span> '+esc(c.goal)+'</p>'+
+    '<p class="kv"><span class="lab">You build:</span> '+esc(c.proj)+'</p>'+
+    '<div class="take"><span class="lab">The honest take:</span> '+esc(c.take)+'</div>'+
+    '<p class="metaline"><span class="chip">'+esc(c.time)+'</span><span class="chip">'+esc(c.level)+'</span></p>';
   return card;
 }
 
-order.forEach(tk=>{
+order.forEach(function(tk){
   const T = TRACKS[tk];
   const sec = document.createElement("section");
   sec.className="track"; sec.dataset.track=tk;
   const projs = PROJECTS[tk]||[];
-  const projectsHtml = projs.length ? `<div class="projects"><h5>Prove-it projects</h5><p class="ph">Build these to learn the skills and show ability — personal builds, open-source contributions, or demo/write-ups worth putting on a CV or GitHub.</p><div class="proj-grid">${projs.map(p=>`<div class="proj-card"><div class="pt"><span class="ptag pt-${p.type}">${ptypeLabel[p.type]}</span><h6>${p.title}</h6></div><p>${p.blurb}</p><div class="proves"><b>Proves:</b> ${p.proves}</div></div>`).join("")}</div></div>` : "";
-  sec.innerHTML = `
-    <div class="track-head">
-      <div class="bar" style="background:${T.color}"></div>
-      <div><h3>${T.name}</h3><p class="sub">${T.sub}</p></div>
-    </div>
-    <div class="track-note">${T.note}</div>
-    ${projectsHtml}`;
-  const tkCourses = COURSES.filter(c=>c.t===tk);
-  const hasStreams = tkCourses.some(c=>c.stream);
+  let projectsHtml="";
+  if(projs.length){
+    projectsHtml='<div class="projects"><h5>Prove-it projects</h5><p class="ph">Build these to learn the skills and show ability — personal builds, open-source contributions, or demo/write-ups worth putting on a CV or GitHub.</p><div class="proj-grid">'+
+      projs.map(function(p){return '<div class="proj-card"><div class="pt"><span class="ptag pt-'+p.type+'">'+esc(ptypeLabel[p.type])+'</span><h6>'+esc(p.title)+'</h6></div><p>'+esc(p.blurb)+'</p><div class="proves"><b>Proves:</b> '+esc(p.proves)+'</div></div>';}).join("")+
+      '</div></div>';
+  }
+  sec.innerHTML =
+    '<div class="track-head"><div class="bar" style="background:'+T.color+'"></div>'+
+    '<div><h3>'+T.name+'</h3><p class="sub">'+T.sub+'</p></div></div>'+
+    '<div class="track-note">'+T.note+'</div>'+projectsHtml;
+  const tkCourses = COURSES.filter(function(c){return c.t===tk;});
+  const hasStreams = tkCourses.some(function(c){return c.stream;});
   if(hasStreams){
     const streamsOrder=[];
-    tkCourses.forEach(c=>{ const s=c.stream||"Other"; if(!streamsOrder.includes(s)) streamsOrder.push(s); });
-    streamsOrder.forEach(s=>{
+    tkCourses.forEach(function(c){var s=c.stream||"Other"; if(streamsOrder.indexOf(s)<0) streamsOrder.push(s);});
+    streamsOrder.forEach(function(s){
       const group=document.createElement("div");
       group.className="stream-group";
-      const items=tkCourses.filter(c=>(c.stream||"Other")===s).sort((a,b)=>fitMeta[a.fit].w-fitMeta[b.fit].w);
-      group.innerHTML=`<div class="stream-head">${s} <span class="n">· ${items.length} resource${items.length===1?"":"s"}</span></div>`;
+      const items=tkCourses.filter(function(c){return (c.stream||"Other")===s;}).sort(function(a,b){return fitMeta[a.fit].w-fitMeta[b.fit].w;});
+      group.innerHTML='<div class="stream-head">'+esc(s)+' <span class="n">· '+items.length+' resource'+(items.length===1?"":"s")+'</span></div>';
       const grid=document.createElement("div"); grid.className="cards";
-      items.forEach(c=>grid.appendChild(makeCard(c)));
+      items.forEach(function(c){grid.appendChild(makeCard(c));});
       group.appendChild(grid);
       sec.appendChild(group);
     });
   } else {
     const grid=document.createElement("div"); grid.className="cards";
-    tkCourses.sort((a,b)=>fitMeta[a.fit].w-fitMeta[b.fit].w).forEach(c=>grid.appendChild(makeCard(c)));
+    tkCourses.sort(function(a,b){return fitMeta[a.fit].w-fitMeta[b.fit].w;}).forEach(function(c){grid.appendChild(makeCard(c));});
     sec.appendChild(grid);
   }
   tracksEl.appendChild(sec);
@@ -545,50 +587,54 @@ const countEl=document.getElementById("count");
 
 function apply(){
   let shown=0;
-  document.querySelectorAll(".track").forEach(sec=>{
+  document.querySelectorAll(".track").forEach(function(sec){
     const tk=sec.dataset.track;
     let visInSec=0;
-    sec.querySelectorAll(".card").forEach(card=>{
+    sec.querySelectorAll(".card").forEach(function(card){
       const okTrack = state.track==="all"||state.track===tk;
       const okCost = state.cost==="all"||card.dataset.cost===state.cost;
       const okStatus = state.status==="all"||card.dataset.status===state.status;
-      const okQ = !state.q||card.dataset.text.includes(state.q);
+      const okQ = !state.q||card.dataset.text.indexOf(state.q)>=0;
       const vis = okTrack&&okCost&&okStatus&&okQ;
       card.classList.toggle("hide",!vis);
       if(vis){visInSec++;shown++;}
     });
-    sec.querySelectorAll(".stream-group").forEach(g=>{
-      const anyVis=[...g.querySelectorAll(".card")].some(c=>!c.classList.contains("hide"));
+    sec.querySelectorAll(".stream-group").forEach(function(g){
+      const anyVis=Array.prototype.slice.call(g.querySelectorAll(".card")).some(function(c){return !c.classList.contains("hide");});
       g.classList.toggle("hide",!anyVis);
     });
     sec.classList.toggle("hide",visInSec===0);
   });
-  countEl.textContent = shown+" course"+(shown===1?"":"s")+" shown";
+  countEl.textContent = shown+" resource"+(shown===1?"":"s")+" shown";
 }
 
-document.getElementById("pills").addEventListener("click",e=>{
+function setActive(container, btn){
+  container.querySelectorAll("button").forEach(function(p){p.classList.remove("active");p.setAttribute("aria-pressed","false");});
+  btn.classList.add("active"); btn.setAttribute("aria-pressed","true");
+}
+document.getElementById("pills").addEventListener("click",function(e){
   const b=e.target.closest(".pill"); if(!b)return;
-  document.querySelectorAll("#pills .pill").forEach(p=>p.classList.remove("active"));
-  b.classList.add("active"); state.track=b.dataset.track; apply();
+  setActive(document.getElementById("pills"),b); state.track=b.dataset.track; apply();
 });
-document.getElementById("costToggle").addEventListener("click",e=>{
+document.getElementById("costToggle").addEventListener("click",function(e){
   const b=e.target.closest("button"); if(!b)return;
-  document.querySelectorAll("#costToggle button").forEach(p=>p.classList.remove("active"));
-  b.classList.add("active"); state.cost=b.dataset.cost; apply();
+  setActive(document.getElementById("costToggle"),b); state.cost=b.dataset.cost; apply();
 });
-document.getElementById("statusToggle").addEventListener("click",e=>{
+document.getElementById("statusToggle").addEventListener("click",function(e){
   const b=e.target.closest("button"); if(!b)return;
-  document.querySelectorAll("#statusToggle button").forEach(p=>p.classList.remove("active"));
-  b.classList.add("active"); state.status=b.dataset.status; apply();
+  setActive(document.getElementById("statusToggle"),b); state.status=b.dataset.status; apply();
 });
-document.getElementById("search").addEventListener("input",e=>{state.q=e.target.value.trim().toLowerCase();apply();});
+document.getElementById("search").addEventListener("input",function(e){state.q=e.target.value.trim().toLowerCase();apply();});
 
-// click-to-cycle status pills (view-only)
-document.getElementById("tracks").addEventListener("click",e=>{
+// click-to-cycle status pills (persisted in localStorage where available)
+tracksEl.addEventListener("click",function(e){
   const btn=e.target.closest(".status"); if(!btn)return;
   const card=btn.closest(".card");
   const ns=nextStatus[btn.dataset.status]||"todo";
-  btn.dataset.status=ns; btn.textContent=statusLabel[ns]; card.dataset.status=ns;
+  btn.dataset.status=ns; btn.textContent=statusLabel[ns];
+  btn.setAttribute("aria-label","Progress: "+statusLabel[ns]+". Click to change.");
+  card.dataset.status=ns;
+  if(card.dataset.key){PROG[card.dataset.key]=ns; saveProg(PROG);}
   apply();
 });
 
