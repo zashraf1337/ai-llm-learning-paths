@@ -104,6 +104,24 @@
   .proj-card p{margin:0;font-size:12.3px;color:#444}
   .proj-card .proves{margin-top:5px;font-size:11.5px;color:#475569}
   .proj-card .proves b{color:#0f172a}
+  .comps{background:#fffdf7;border:1px solid #f1e4c9;border-radius:12px;padding:13px 15px;margin:0 0 18px}
+  .comps h5{margin:0 0 3px;font-size:13.5px;color:#7c5e10;font-weight:800;letter-spacing:.01em}
+  .comps .ph{font-size:12px;color:var(--ink2);margin:0 0 11px}
+  .comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:10px}
+  .comp-card{background:#fff;border:1px solid #f1e4c9;border-radius:10px;padding:11px 12px;display:flex;flex-direction:column}
+  .comp-card .ct{display:flex;align-items:center;gap:7px;margin-bottom:5px;flex-wrap:wrap}
+  .comp-card h6{margin:0;font-size:13.5px;font-weight:700;color:var(--ink)}
+  .ctag{font-size:9.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:5px;white-space:nowrap;background:#fef3c7;color:#92400e}
+  .ctag.live{background:#dcfce7;color:#166534}
+  .ctag.annual{background:#dbeafe;color:#1e40af}
+  .ctag.past{background:#f3f4f6;color:#4b5563;border:1px solid #e5e7eb}
+  .comp-card .cmeta{font-size:11px;color:var(--ink2);margin:0 0 6px;display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+  .comp-card .cmeta .cprize{font-weight:800;color:#7c5e10}
+  .comp-card p{margin:0;font-size:12.3px;color:#444}
+  .comp-card .cnote{margin-top:5px;font-size:11.5px;color:#475569}
+  .comp-card .cnote b{color:#0f172a}
+  .comp-card .clink{margin-top:7px;font-size:11.5px;font-weight:700;color:#7c5e10;text-decoration:none}
+  .comp-card .clink:hover{text-decoration:underline}
 
   .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
   .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 17px;
@@ -144,10 +162,10 @@
 <header class="top">
   <div class="wrap">
     <h1>AI / LLM Learning Paths</h1>
-    <p>A practical, project-first guide across seven tracks — <b>Foundations</b>, <b>Red-teaming / LLM security</b>, <b>AI Engineer (agentic apps)</b>, <b>Coding Agents</b>, <b>Building &amp; fine-tuning models</b>, <b>Infra &amp; MLOps</b>, and <b>AI researcher</b> — for anyone moving into AI/LLM work. Every resource lists the goal, what you build, cost and time, and an honest read on how useful it is. Each track also has <b>prove-it projects</b>. Career and demand notes are general observations worth checking against current job postings. Progress is saved in your browser where supported.</p>
+    <p>A practical, project-first guide across seven tracks — <b>Foundations</b>, <b>Red-teaming / LLM security</b>, <b>AI Engineer (agentic apps)</b>, <b>Coding Agents</b>, <b>Building &amp; fine-tuning models</b>, <b>Infra &amp; MLOps</b>, and <b>AI researcher</b> — for anyone moving into AI/LLM work. Every resource lists the goal, what you build, cost and time, and an honest read on how useful it is. Each track also has <b>prove-it projects</b> and <b>competitions</b> to showcase and validate your skills. Career and demand notes are general observations worth checking against current job postings. Progress is saved in your browser where supported.</p>
     <div class="meta-line">
       <span class="tag">7 tracks</span>
-      <span class="tag">~82 resources + 20 projects</span>
+      <span class="tag">~82 resources · 20 projects · 15 competitions</span>
       <span class="tag">Free &amp; paid options</span>
       <span class="tag">Verified &amp; updated Aug 2026</span>
     </div>
@@ -221,8 +239,8 @@
     <p><b>How to read the ratings.</b> "Fit" reflects how central a resource is <i>within its track</i> — <b>Start here</b> and <b>Core</b> first, <b>Situational</b> only if you need that specific thing. It is not a measure of quality: a resource can be world-class and still "Situational" for a given goal. "The honest take" flags caveats — dated material, prerequisites, hype vs. substance.</p>
     <p><b>Careers &amp; demand.</b> Notes about hiring, "fit," and demand are general observations from public sources, not guarantees. Validate against current job postings in your region and role before making decisions.</p>
     <p><b>Cost &amp; accuracy.</b> Prices were checked on official pages in Aug 2026 and change often — reconfirm before paying. Notably: DeepLearning.AI short-course <i>videos</i> are free, but hands-on labs, quizzes, and certificates now require DeepLearning.AI <b>Pro</b> (~$25/mo). Many "free" items are open-source tools or open web resources. The AI Red Teaming (AIRTP+) credential is tiered: exam ~$299, on-demand course + exam ~$1,199, live cohort ~$1,495.</p>
-    <p><b>Primary sources:</b> Stanford CS336/CS224n/CS231n, fast.ai, Karpathy (Zero-to-Hero, nanochat), Hugging Face (LLM / Agents / MCP courses, TRL, Ultra-Scale Playbook), DeepLearning.AI, Anthropic Academy, OpenAI (Agents SDK, Responses API, Evals), Google (ADK), LangChain Academy, GPU MODE, Chip Huyen (<i>AI Engineering</i>, <i>Designing ML Systems</i>), Raschka, Maxime Labonne, ARENA / Neel Nanda, Learn Prompting / HackAPrompt, OWASP GenAI Security Project, MITRE ATLAS, NIST AI RMF, SWE-bench, DataTalksClub, and the tool projects' own docs (vLLM, SGLang, Ollama, LiteLLM, Ragas, Inspect, Langfuse, Phoenix, garak, PyRIT, promptfoo). Verify current pricing/enrollment on each provider's site.</p>
-    <p style="color:#999">Self-hosted: this is a single self-contained HTML file. The resource list is a plain JS array (<code>const COURSES</code>); edit a <code>status</code> or add <code>{...}</code> entries to customize. Progress persists in localStorage on your own domain.</p>
+    <p><b>Primary sources:</b> Stanford CS336/CS224n/CS231n, fast.ai, Karpathy (Zero-to-Hero, nanochat), Hugging Face (LLM / Agents / MCP courses, TRL, Ultra-Scale Playbook), DeepLearning.AI, Anthropic Academy, OpenAI (Agents SDK, Responses API, Evals), Google (ADK), LangChain Academy, GPU MODE, Chip Huyen (<i>AI Engineering</i>, <i>Designing ML Systems</i>), Raschka, Maxime Labonne, ARENA / Neel Nanda, Learn Prompting / HackAPrompt, OWASP GenAI Security Project, MITRE ATLAS, NIST AI RMF, SWE-bench, DataTalksClub, and the tool projects' own docs (vLLM, SGLang, Ollama, LiteLLM, Ragas, Inspect, Langfuse, Phoenix, garak, PyRIT, promptfoo). Competitions: Kaggle, ARC Prize, Gray Swan Arena, DrivenData, HackAPrompt, DEF CON AI Village, MLCommons/MLPerf, GPU MODE, NeurIPS, AIMO. Verify current pricing/enrollment and competition dates on each provider's site.</p>
+    <p style="color:#999">Self-hosted: this is a single self-contained HTML file. The resource list is a plain JS array (<code>const COURSES</code>); projects and competitions are <code>const PROJECTS</code> / <code>const COMPETITIONS</code>. Edit a <code>status</code> or add <code>{...}</code> entries to customize. Progress persists in localStorage on your own domain.</p>
   </footer>
 </div>
 
@@ -286,6 +304,38 @@ const PROJECTS = {
     {type:"port",title:"Reproduce a recent paper",blurb:"Reproduce a key result and publish the repo plus a short report on what matched and what didn't.",proves:"The core research-engineer skill: turning a paper into verified code."},
     {type:"oss",title:"Mechanistic-interpretability mini-investigation",blurb:"Use TransformerLens to find and explain a small circuit or feature; write it up.",proves:"Genuine research ability — and it doubles as model-level security insight."},
     {type:"demo",title:"ARENA capstone extension",blurb:"Complete an ARENA chapter and extend one exercise into a small original experiment.",proves:"Research-engineer readiness with a concrete artifact."}
+  ]
+};
+
+const COMPETITIONS = {
+  foundations:[
+    {name:"Kaggle — Getting Started & Playground",host:"Kaggle (Google)",url:"https://www.kaggle.com/competitions",tag:"Ongoing",tc:"live",prize:"Free · medals",level:"Beginner",what:"Titanic and House Prices teach the end-to-end ML workflow; the monthly Playground Series gives fresh, low-stakes datasets to keep practicing.",note:"The default place to build a public ML track record — Getting-Started comps are 'Knowledge' (no cash), but the notebooks and leaderboard are the real portfolio."},
+    {name:"DrivenData",host:"DrivenData",url:"https://www.drivendata.org/competitions/",tag:"Ongoing",tc:"live",prize:"Cash (varies)",level:"Beginner→Intermediate",what:"Machine-learning competitions on social-impact problems — health, climate, conservation, public services.",note:"A meaningful alternative to Kaggle if you want portfolio work tied to real-world impact. Check the current open competitions."}
+  ],
+  security:[
+    {name:"Gray Swan Arena",host:"Gray Swan AI",url:"https://app.grayswan.ai/arena",tag:"Recurring",tc:"",prize:"$500k+ paid · hiring",level:"Any→Advanced",what:"The largest AI red-teaming arena: recurring waves of jailbreak, prompt-injection, and agent-abuse challenges with cash prizes and a private-gig pipeline.",note:"The single best place to prove AI-security skill in public — top players have earned $25k–$35k and standouts get hired for private red-teaming."},
+    {name:"HackAPrompt",host:"Learn Prompting",url:"https://www.hackaprompt.com/",tag:"Recurring",tc:"",prize:"Prizes + dataset fame",level:"Beginner→Advanced",what:"A global prompt-injection/jailbreak competition; past rounds produced a landmark prompt-hacking dataset used in research.",note:"Also listed under Security courses — as a competition it's the classic proving ground for prompt hacking, and attacks you find are portfolio material."},
+    {name:"DEF CON AI Village — Generative Red Team",host:"AI Village (DEF CON)",url:"https://aivillage.org/",tag:"Annual",tc:"annual",prize:"Recognition",level:"Intermediate→Advanced",what:"The marquee live AI red-team event — thousands of hackers test frontier models on-site against structured challenges.",note:"The most visible AI-security venue of the year. Watch AI Village for the current event and its public results."}
+  ],
+  aieng:[
+    {name:"Agentic AI hackathons",host:"Kaggle · Devpost · vendors",url:"https://devpost.com/hackathons",tag:"Rolling",tc:"live",prize:"Cash + credits",level:"Any",what:"Frequent sponsor hackathons (Kaggle Hackathons, Devpost, and LangChain/OpenAI/Anthropic/Google events) where you ship an agent or LLM app against a theme in days.",note:"The fastest way to turn agent skills into a demo others can see. Great portfolio filler; confirm each event's rules and dates."},
+    {name:"GAIA — General AI Assistants leaderboard",host:"Hugging Face et al.",url:"https://huggingface.co/spaces/gaia-benchmark/leaderboard",tag:"Ongoing",tc:"live",prize:"Ranking",level:"Intermediate→Advanced",what:"Submit an agent that answers real-world, tool-requiring questions and see it ranked against others on a public leaderboard.",note:"A credible way to show an agent's end-to-end capability beyond a demo video."}
+  ],
+  coding:[
+    {name:"Konwinski Prize (K Prize)",host:"Andy Konwinski · Kaggle",url:"https://www.kaggle.com/competitions/konwinski-prize",tag:"Concluded",tc:"past",prize:"$1M pool",level:"Advanced",what:"A $1M prize for an open-source agent that resolves 90% of brand-new, contamination-free GitHub issues (a fresh SWE-bench test set collected after the deadline).",note:"The 2024–25 round is over (no team hit the 90% grand-prize bar); it's the model for honest coding-agent evaluation — watch for a sequel."},
+    {name:"SWE-bench (Verified) leaderboard",host:"Princeton et al.",url:"https://www.swebench.com/",tag:"Ongoing",tc:"live",prize:"Ranking",level:"Intermediate→Advanced",what:"Submit a coding agent and rank it on resolving real GitHub issues — the field's standard scoreboard.",note:"Also in the course list as a benchmark; as a competition it's the number employers recognize. Terminal-Bench and Aider Polyglot are good complements."}
+  ],
+  build:[
+    {name:"AI Mathematical Olympiad (AIMO)",host:"XTX Markets · Kaggle",url:"https://aimoprize.com/",tag:"Recurring",tc:"",prize:"$10M+ program",level:"Advanced",what:"A multi-year, multimillion-dollar Kaggle program to build models that solve national-olympiad-level math — heavy on reasoning, fine-tuning, and RL.",note:"Progress Prizes run in rounds; check the current one. A serious proving ground for reasoning-model builders."},
+    {name:"Kaggle LLM competitions",host:"Kaggle",url:"https://www.kaggle.com/competitions",tag:"Rotating",tc:"live",prize:"Cash (varies)",level:"Intermediate",what:"Featured LLM contests rotate through — fine-tuning to predict human preference (Chatbot Arena data), prompt recovery, detecting AI-generated text, and more.",note:"The applied fine-tuning/eval proving ground. 'LLM Classification Finetuning' is a current Getting-Started entry point."}
+  ],
+  infra:[
+    {name:"MLPerf (MLCommons)",host:"MLCommons",url:"https://mlcommons.org/benchmarks/",tag:"Biannual",tc:"annual",prize:"Recognition",level:"Advanced",what:"The industry-standard training and inference benchmark; organizations submit tuned systems and results are published in official rounds.",note:"Not a cash contest but the recognized scoreboard for serving/systems performance — a strong signal for infra roles."},
+    {name:"GPU MODE kernel competitions",host:"GPU MODE community",url:"https://www.gpumode.com/",tag:"Recurring",tc:"",prize:"Prizes + cred",level:"Advanced",what:"Community GPU-kernel-writing competitions (e.g., sponsored kernel challenges on modern accelerators) with public leaderboards.",note:"A rare, high-signal way to prove CUDA/Triton performance skill. Watch the community/Discord for the current challenge."}
+  ],
+  research:[
+    {name:"ARC Prize (ARC-AGI)",host:"ARC Prize Foundation",url:"https://arcprize.org/competitions",tag:"Annual",tc:"annual",prize:"$2M pool (2026)",level:"Advanced",what:"The headline reasoning competition: build open-source systems that solve novel ARC-AGI tasks. 2026 spans ARC-AGI-2, an ARC-AGI-3 agent track, and a paper track.",note:"The most prestigious open reasoning benchmark — even a strong paper-track write-up is real research signal."},
+    {name:"NeurIPS Competition Track",host:"NeurIPS",url:"https://neurips.cc/",tag:"Annual",tc:"annual",prize:"Recognition + some cash",level:"Advanced",what:"Each year NeurIPS hosts dozens of research competitions (efficiency, agents, reasoning, domain ML) that publish results and often lead to papers.",note:"A direct on-ramp to research visibility. Also watch ICML, CVPR, and KDD challenge tracks."}
   ]
 };
 
@@ -601,6 +651,13 @@ const ROLES = {
 
 const UPDATES = [
   // NEWEST FIRST — the monthly refresh prepends a new {date, title, items:[...]} entry directly below this line.
+  {date:"2026-08-14", title:"Added Competitions & challenges to every track", items:[
+    "New per-track 'Competitions & challenges' section — public contests, arenas, and leaderboards to showcase and validate skills (15 curated to start).",
+    "Security: Gray Swan Arena ($500k+ paid, recurring AI red-teaming), HackAPrompt, and DEF CON AI Village's Generative Red Team.",
+    "Research/Build: ARC Prize (ARC-AGI, $2M in 2026), AI Mathematical Olympiad, and the NeurIPS Competition Track; Coding: the $1M Konwinski Prize (concluded) plus the live SWE-bench leaderboard.",
+    "Foundations/Infra/AI-Engineer: Kaggle (Getting Started + Playground), DrivenData, MLPerf, GPU MODE kernel comps, agentic-AI hackathons, and the GAIA leaderboard.",
+    "Competitions are now part of the monthly refresh scan (new/updated contests, prizes, and dates)."
+  ]},
   {date:"2026-08-13", title:"Monthly refresh — new coding, security & MCP courses; CS336 2026", items:[
     "Coding Agents: added DeepLearning.AI × JetBrains 'AI Coding Workflows: From Cloud to Local' — model routing, subagents, and moving from cloud to hybrid to fully local.",
     "Security: added CAISP (Practical DevSecOps), a full-stack offense + defense + governance AI-security certification that complements the offensive AIRTP+/Arcanum/OSAI options.",
@@ -662,10 +719,26 @@ order.forEach(function(tk){
       projs.map(function(p){return '<div class="proj-card"><div class="pt"><span class="ptag pt-'+p.type+'">'+esc(ptypeLabel[p.type])+'</span><h6>'+esc(p.title)+'</h6></div><p>'+esc(p.blurb)+'</p><div class="proves"><b>Proves:</b> '+esc(p.proves)+'</div></div>';}).join("")+
       '</div></div>';
   }
+  let compsHtml="";
+  const comps = COMPETITIONS[tk]||[];
+  if(comps.length){
+    compsHtml='<div class="comps"><h5>Competitions &amp; challenges — showcase &amp; validate</h5><p class="ph">Public contests, arenas, and leaderboards where you can prove skills against others and build a track record. Prizes and dates change fast — always confirm current details on the official page.</p><div class="comp-grid">'+
+      comps.map(function(k){
+        var meta=[esc(k.host)];
+        if(k.prize) meta.push('<span class="cprize">'+esc(k.prize)+'</span>');
+        if(k.level) meta.push(esc(k.level));
+        return '<div class="comp-card"><div class="ct"><span class="ctag '+esc(k.tc||"")+'">'+esc(k.tag)+'</span><h6>'+esc(k.name)+'</h6></div>'+
+          '<div class="cmeta">'+meta.join(" · ")+'</div>'+
+          '<p>'+esc(k.what)+'</p>'+
+          (k.note?'<div class="cnote"><b>Note:</b> '+esc(k.note)+'</div>':"")+
+          '<a class="clink" href="'+safeUrl(k.url)+'" target="_blank" rel="noopener noreferrer">Visit ↗</a>';
+      }).join("")+
+      '</div></div>';
+  }
   sec.innerHTML =
     '<div class="track-head"><div class="bar" style="background:'+T.color+'"></div>'+
     '<div><h3>'+T.name+'</h3><p class="sub">'+T.sub+'</p></div></div>'+
-    '<div class="track-note">'+T.note+'</div>'+projectsHtml;
+    '<div class="track-note">'+T.note+'</div>'+projectsHtml+compsHtml;
   const tkCourses = COURSES.filter(function(c){return c.t===tk;});
   const hasStreams = tkCourses.some(function(c){return c.stream;});
   if(hasStreams){
