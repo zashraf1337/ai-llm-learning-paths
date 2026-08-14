@@ -147,7 +147,7 @@
     <p>A practical, project-first guide across seven tracks — <b>Foundations</b>, <b>Red-teaming / LLM security</b>, <b>AI Engineer (agentic apps)</b>, <b>Coding Agents</b>, <b>Building &amp; fine-tuning models</b>, <b>Infra &amp; MLOps</b>, and <b>AI researcher</b> — for anyone moving into AI/LLM work. Every resource lists the goal, what you build, cost and time, and an honest read on how useful it is. Each track also has <b>prove-it projects</b>. Career and demand notes are general observations worth checking against current job postings. Progress is saved in your browser where supported.</p>
     <div class="meta-line">
       <span class="tag">7 tracks</span>
-      <span class="tag">~80 resources + 20 projects</span>
+      <span class="tag">~82 resources + 20 projects</span>
       <span class="tag">Free &amp; paid options</span>
       <span class="tag">Verified &amp; updated Aug 2026</span>
     </div>
@@ -347,6 +347,9 @@ const COURSES = [
   {t:"security",stream:"Courses & certifications",fit:"high",status:"todo",title:"AI Red Teaming Masterclass + AIRTP+ cert",prov:"Learn Prompting · Sander Schulhoff",url:"https://learnprompting.org/blog/ai-red-teaming-courses",cost:"Exam ~$299 · on-demand ~$1,199 · live ~$1,495",cType:"paid",time:"~4–6 wks",level:"Advanced",
     goal:"Advanced attacks plus a certification, offered as exam-only, on-demand+exam, or live cohort+exam.",proj:"Expose vulnerabilities in real AI systems; sit the AIRTP+ exam.",
     take:"The most complete paid AI-red-team credential right now. Pick the tier that fits; verify employer recognition for your target roles. Do it after the free track."},
+  {t:"security",stream:"Courses & certifications",fit:"high",status:"todo",title:"CAISP — Certified AI Security Professional",prov:"Practical DevSecOps",url:"https://www.practical-devsecops.com/certified-ai-security-professional/",cost:"Paid (~$1,099)",cType:"paid",time:"Self-paced (60-day labs)",level:"Intermediate",
+    goal:"A full-stack AI-security certification spanning offense and defense: OWASP LLM Top 10, adversarial ML, AI threat modeling (STRIDE), supply-chain security, and governance (NIST RMF, ISO 42001, EU AI Act).",proj:"Work through 30+ browser-based labs, then sit a 6-hour hands-on practical exam.",
+    take:"The defensive-and-governance counterpart to the offensive AIRTP+/Arcanum/OSAI credentials — choose by whether your target roles lean attack or defense/compliance. Lifetime-valid; verify current price and employer recognition."},
   {t:"security",stream:"Courses & certifications",fit:"sit",status:"todo",title:"Attacking AI (live) — Jason Haddix",prov:"Arcanum Security",url:"https://arcanum-sec.com/training/attacking-ai",cost:"Paid (live; free 1-hr intro via Antisyphon)",cType:"paid",time:"2 days",level:"Intermediate→Advanced",
     goal:"Instructor-led offensive AI tradecraft: attacking LLM apps, agents, and surrounding infrastructure.",proj:"Exploit LLM apps and agents end-to-end using a 7-point methodology.",
     take:"Strong if you want live instruction from a well-known offensive-security practitioner. A free 1-hour 'Anti-Cast' intro lets you sample it first."},
@@ -382,6 +385,9 @@ const COURSES = [
   {t:"aieng",stream:"Agents & agentic engineering",fit:"high",status:"todo",title:"Agent protocols: MCP · A2A · function-calling / OpenAPI",prov:"Anthropic · Linux Foundation · vendors",url:"https://modelcontextprotocol.io/",cost:"Free",cType:"free",time:"~1 wk",level:"Intermediate",
     goal:"How agents connect to tools, data, and each other: MCP (tools/context), A2A (agent-to-agent), plain function-calling/OpenAPI, and AGENTS.md.",proj:"Expose one tool three ways (function-calling, an MCP server, an OpenAPI spec) and compare.",
     take:"MCP is one important emerging protocol, not the only one — A2A (now under the Linux Foundation) and plain function-calling matter too. Know the trade-offs rather than betting on a single standard."},
+  {t:"aieng",stream:"Agents & agentic engineering",fit:"high",status:"todo",title:"MCP Course (Model Context Protocol)",prov:"Hugging Face · Anthropic",url:"https://huggingface.co/learn/mcp-course",cost:"Free (certified)",cType:"free",time:"~15 hrs",level:"Beginner→Intermediate",
+    goal:"Understand, use, and build with MCP end-to-end: architecture, SDKs, and deploying an MCP application on the Hugging Face ecosystem.",proj:"Build and deploy an MCP application; earn the fundamentals or completion certificate.",
+    take:"The focused, hands-on companion to the agent-protocols card — free and built with Anthropic. Do it right after the Agents Course to make tool and context integration concrete."},
   {t:"aieng",stream:"Agents & agentic engineering",fit:"deep",status:"todo",title:"DSPy: Build and Optimize Agentic Apps",prov:"DeepLearning.AI · Stanford DSPy",url:"https://www.deeplearning.ai/short-courses/dspy-build-optimize-agentic-apps/",cost:"Videos free · Pro ~$25/mo (labs)",cType:"free",time:"~1–2 hrs",level:"Intermediate→Advanced",
     goal:"Program LLM apps with signatures + optimizers instead of brittle hand-tuned prompts.",proj:"Build a DSPy program and auto-optimize its prompts against a metric.",
     take:"A more principled, engineering-flavored way to build LLM systems. Adopt once you feel the pain of manual prompt-wrangling."},
@@ -432,6 +438,9 @@ const COURSES = [
   {t:"coding",stream:"Using coding agents well",fit:"high",status:"todo",title:"Cursor + Aider (agentic IDE & terminal agent)",prov:"Cursor · Aider (open-source)",url:"https://aider.chat/",cost:"Cursor freemium · Aider free/OSS",cType:"free",time:"~1 wk",level:"Beginner→Intermediate",
     goal:"Drive the two most-used non-Claude coding tools: Cursor (agentic IDE) and Aider (open-source terminal agent).",proj:"Ship a feature via Cursor; use Aider to refactor a repo from the terminal.",
     take:"Worth using both hands-on — they cover different workflows, and Aider is open-source with its own Polyglot leaderboard."},
+  {t:"coding",stream:"Using coding agents well",fit:"high",status:"todo",title:"AI Coding Workflows: From Cloud to Local",prov:"DeepLearning.AI · JetBrains",url:"https://www.deeplearning.ai/courses/ai-coding-workflows-from-cloud-to-local",cost:"Videos free · Pro ~$25/mo (labs)",cType:"free",time:"~1–2 hrs",level:"Intermediate",
+    goal:"Take back control of a coding-agent workflow layer by layer: model routing, subagents, and moving from cloud to hybrid to fully local.",proj:"Rebuild one app from a Claude Code baseline through subagents, a cheaper model, an open-source agent (OpenCode), and finally local models (LM Studio).",
+    take:"A practical, vendor-diverse look at the cost, speed, and privacy trade-offs of coding agents — the layers stay useful even as specific tools change. Built with JetBrains."},
   {t:"coding",stream:"Using coding agents well",fit:"sit",status:"todo",title:"The Complete AI Coding Course (Cursor, Claude Code)",prov:"Udemy",url:"https://www.udemy.com/",cost:"Paid (~$15–90)",cType:"paid",time:"~15+ hrs",level:"Beginner→Intermediate",
     goal:"A guided, ship-focused walkthrough of building full-stack apps with coding agents.",proj:"Build and ship a full-stack app largely via agents.",
     take:"Optional. Fine if you want one structured video path; the free first-party material covers most of it. Confirm the current course/instructor before buying."},
@@ -458,7 +467,7 @@ const COURSES = [
   {t:"build",stream:"Build LLMs from scratch",fit:"high",status:"todo",title:"nanochat",prov:"Andrej Karpathy",url:"https://github.com/karpathy/nanochat",cost:"Free / OSS",cType:"free",time:"~1–2 wks",level:"Intermediate",
     goal:"Train a full ChatGPT-style model (pretrain → SFT → RL → serve) for ~$100 of compute.",proj:"Your own end-to-end mini-ChatGPT with a web UI.",
     take:"The most satisfying full-stack build available. Do it after Zero-to-Hero — it ties the whole pipeline together."},
-  {t:"build",stream:"Build LLMs from scratch",fit:"deep",status:"todo",title:"CS336: Language Modeling from Scratch",prov:"Stanford (2025) · free lectures",url:"https://stanford-cs336.github.io/spring2025/",cost:"Free",cType:"free",time:"~40+ hrs",level:"Advanced",
+  {t:"build",stream:"Build LLMs from scratch",fit:"deep",status:"todo",title:"CS336: Language Modeling from Scratch",prov:"Stanford (2026) · free lectures",url:"https://cs336.stanford.edu/",cost:"Free",cType:"free",time:"~40+ hrs",level:"Advanced",
     goal:"Build an LLM end-to-end incl. systems, scaling laws, data, and alignment under compute limits.",proj:"Tokenizer → transformer → training → scaling → SFT/DPO, hand-built.",
     take:"Widely called the best advanced LLM course online — but it assumes solid ML + PyTorch. Save it for after Foundations."},
   {t:"build",stream:"Fine-tuning & post-training",fit:"high",status:"todo",title:"Unsloth (fine-tuning notebooks)",prov:"Unsloth",url:"https://docs.unsloth.ai/",cost:"Free / OSS",cType:"free",time:"~1 wknd",level:"Beginner→Intermediate",
@@ -517,7 +526,7 @@ const COURSES = [
   {t:"infra",stream:"Distributed training & scaling",fit:"deep",status:"todo",title:"The Ultra-Scale Playbook",prov:"Hugging Face (2025)",url:"https://huggingface.co/spaces/nanotron/ultrascale-playbook",cost:"Free",cType:"free",time:"~1–2 wks",level:"Advanced",
     goal:"Train LLMs across GPU clusters: data/tensor/pipeline parallelism, memory, comms.",proj:"Reason about a multi-GPU training budget; reproduce a scaling experiment.",
     take:"The best free deep-dive on distributed training (from 4,000+ experiments on 512 GPUs). Do it once single-GPU training is comfortable."},
-  {t:"infra",stream:"Distributed training & scaling",fit:"deep",status:"todo",title:"CS336 (systems, parallelism, kernels)",prov:"Stanford (2025)",url:"https://stanford-cs336.github.io/spring2025/",cost:"Free",cType:"free",time:"part of course",level:"Advanced",
+  {t:"infra",stream:"Distributed training & scaling",fit:"deep",status:"todo",title:"CS336 (systems, parallelism, kernels)",prov:"Stanford (2026)",url:"https://cs336.stanford.edu/",cost:"Free",cType:"free",time:"part of course",level:"Advanced",
     goal:"The systems half of building LLMs: Triton kernels, parallelism strategies, efficient training/inference.",proj:"Implement kernels and parallel training as course assignments.",
     take:"If you go deep on training infra, CS336's systems lectures are gold. Cross-listed with Build and Research."},
 
@@ -592,6 +601,13 @@ const ROLES = {
 
 const UPDATES = [
   // NEWEST FIRST — the monthly refresh prepends a new {date, title, items:[...]} entry directly below this line.
+  {date:"2026-08-13", title:"Monthly refresh — new coding, security & MCP courses; CS336 2026", items:[
+    "Coding Agents: added DeepLearning.AI × JetBrains 'AI Coding Workflows: From Cloud to Local' — model routing, subagents, and moving from cloud to hybrid to fully local.",
+    "Security: added CAISP (Practical DevSecOps), a full-stack offense + defense + governance AI-security certification that complements the offensive AIRTP+/Arcanum/OSAI options.",
+    "AI Engineer: added the Hugging Face × Anthropic MCP Course to the agents stream (hands-on companion to the agent-protocols card).",
+    "Build & Infra: updated Stanford CS336 to the Spring 2026 offering (now at cs336.stanford.edu).",
+    "Re-verified pricing and role demand/salary across all 7 tracks; ranges remain within current benchmarks. Not career or financial advice."
+  ]},
   {date:"2026-08-14", title:"Public release — 7 tracks, role panel & update log", items:[
     "Expanded to 7 tracks (added Coding Agents) with ~79 resources and 20 prove-it projects.",
     "Added the Role Overview panel (responsibilities, industries, demand, salary) and this monthly update log.",
