@@ -46,6 +46,35 @@
   .count{font-size:12.5px;color:var(--ink2);margin-left:auto;white-space:nowrap}
   .legend{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 0;font-size:11.5px;color:var(--ink2)}
   .legend span{display:inline-flex;align-items:center;gap:5px}
+
+  .roles{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin:14px 0 2px;box-shadow:var(--shadow)}
+  .roles>summary{cursor:pointer;list-style:none;padding:12px 16px;font-size:13.5px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .roles>summary::-webkit-details-marker{display:none}
+  .roles>summary::before{content:"\25B8";color:var(--ink2);font-size:12px;transition:transform .15s}
+  .roles[open]>summary::before{transform:rotate(90deg)}
+  .roles>summary .rs{font-weight:500;color:var(--ink2)}
+  .roles>summary:focus-visible{outline:2px solid #2563eb;outline-offset:2px;border-radius:8px}
+  .role-body{padding:2px 16px 16px}
+  .role-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+  .role-card{border:1px solid var(--line);border-radius:10px;padding:12px 13px;background:#fcfcfb}
+  .role-top{display:flex;align-items:center;gap:8px}
+  .role-top h4{margin:0;font-size:15px}
+  .role-card .aka{font-size:11.5px;color:var(--ink2);margin:3px 0 0}
+  .role-sum{font-size:12.8px;color:#3a3a3a;margin:8px 0}
+  .role-does{font-size:12.5px;margin:8px 0}
+  .role-does b{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink2)}
+  .role-does ul{margin:5px 0 0;padding-left:18px}
+  .role-does li{margin:2px 0}
+  .role-meta{display:grid;gap:7px;margin-top:8px}
+  .role-meta>div{font-size:12.3px;color:#3a3a3a}
+  .role-meta .rl{display:block;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--ink2);margin-bottom:1px}
+  .role-caveat{font-size:11px;color:var(--ink2);margin:12px 0 0;font-style:italic}
+  .upd-entry{border-left:3px solid var(--line);padding:1px 0 1px 12px;margin:0 0 13px}
+  .upd-entry:first-child{border-left-color:#10b981}
+  .upd-head{font-size:13px;color:var(--ink)}
+  .upd-date{font-size:11px;font-weight:800;color:#334155;background:#f1f5f9;padding:1px 7px;border-radius:5px;margin-right:6px;white-space:nowrap}
+  .upd-entry ul{margin:6px 0 0;padding-left:18px}
+  .upd-entry li{font-size:12.5px;color:#3a3a3a;margin:2px 0}
   .pill:focus-visible,.seg button:focus-visible,.status:focus-visible,#search:focus-visible,.card h4 a:focus-visible{
     outline:2px solid #2563eb;outline-offset:2px;border-radius:4px}
 
@@ -169,6 +198,16 @@
       </div>
     </div>
   </div>
+
+  <details class="roles" id="rolesPanel">
+    <summary>Role overview <span class="rs">for <b id="roleSumLabel">all roles</b> — responsibilities · industries · demand · salary</span></summary>
+    <div class="role-body" id="roleContent"></div>
+  </details>
+
+  <details class="roles" id="updatesPanel">
+    <summary>Monthly update log <span class="rs">— what each refresh changed</span></summary>
+    <div class="role-body" id="updatesContent"></div>
+  </details>
 
   <div id="tracks"></div>
 
@@ -508,6 +547,58 @@ const statusLabel = {todo:"To do",doing:"Doing",done:"Done"};
 const nextStatus = {todo:"doing",doing:"done",done:"todo"};
 const order = ["foundations","security","aieng","coding","build","infra","research"];
 
+const ROLES = {
+  foundations:{title:"Foundations — not a job title",aka:"",
+    summary:"The shared ML base under every role below. On its own it isn't a hiring target — it's the prerequisite. Pick a specialized track for an actual role, demand, and salary picture.",
+    does:["Learn to train and understand models","Build Python/PyTorch and core deep-learning fluency","Prepare for any of the six specialized tracks"],
+    industries:"— (prerequisite for all of the below)",demand:"—",salaryUS:"— (see the specialized tracks)"},
+  security:{title:"AI Security Engineer / AI Red Teamer",aka:"LLM security engineer, GenAI security, AI safety & security",
+    summary:"Find and fix how AI systems can be attacked or misused — prompt injection, jailbreaks, data/model exfiltration, agent and tool abuse — and build the defenses, governance, and evals around them.",
+    does:["Red-team LLM apps and agents; write vulnerability reports","Map systems to OWASP LLM Top 10, MITRE ATLAS, and the NIST AI RMF","Build guardrails, filters, and abuse monitoring","Run safety/robustness benchmarks and automated scans (garak, PyRIT)"],
+    industries:"Security vendors, frontier AI labs, finance, healthcare, defense/government, and any enterprise deploying AI.",
+    demand:"Growing fast as GenAI reaches production, but still a small, emerging specialty — an edge for security professionals moving in.",
+    salaryUS:"Roughly $130K–$250K+ base; specialized/senior and frontier-lab roles higher. Thinly benchmarked, so treat as indicative."},
+  aieng:{title:"AI Engineer / LLM Application Engineer",aka:"Applied AI engineer, GenAI engineer, forward-deployed AI engineer",
+    summary:"Build products on top of foundation models — RAG, agents, tool use, evals, and the serving and observability around them. Software engineering, not model training.",
+    does:["Design and ship RAG and agentic features","Integrate vendor and open models via SDKs and APIs","Build eval suites and tracing so quality is measurable","Own latency, cost, reliability, and guardrails in production"],
+    industries:"Nearly every industry — SaaS, finance, healthcare, retail, legal, and startups of all kinds.",
+    demand:"Very high and broad; AI-engineering openings grew ~140% year-over-year in early 2026. The most common AI hiring target for software engineers.",
+    salaryUS:"Wide by source and title: ~$110K entry to ~$255K+ base at senior/principal; US medians often cited ~$145K–$160K base, with total comp (incl. equity) at top companies reaching $300K–$550K+."},
+  coding:{title:"AI-Assisted Software Engineer / Agent Engineer",aka:"Coding-agent skills that augment most SWE roles; 'agent engineer' as an emerging title",
+    summary:"Less a separate job than a fast-rising skill layer: using and building coding agents to ship software faster — plus specialized roles building agent harnesses and dev tools.",
+    does:["Drive coding agents (Claude Code, Codex, Cursor, Aider) to real, tested changes","Engineer repo context and specs (AGENTS.md) so agents work reliably","Build and customize agent harnesses and sandboxed execution","Evaluate coding agents (SWE-bench, Terminal-Bench)"],
+    industries:"All software teams; plus dev-tools and AI-coding startups for the specialized roles.",
+    demand:"Adoption is near-universal in software teams — increasingly an expected skill in SWE job descriptions rather than a standalone title, though dedicated 'agent engineer' roles are emerging.",
+    salaryUS:"Tracks software/AI-engineering pay (roughly $120K–$280K+ base by level). The skill tends to raise a software engineer's market value rather than define a separate band."},
+  build:{title:"ML Engineer / LLM Engineer (training & fine-tuning)",aka:"Applied ML engineer, model-training engineer, applied research engineer",
+    summary:"Build and adapt the models themselves — pretraining, fine-tuning (SFT/LoRA), post-training (DPO/RLHF/GRPO), data pipelines, and rigorous evaluation.",
+    does:["Fine-tune and post-train models toward specific behaviors","Build and clean training and preference datasets","Design model-level evals and catch data contamination","Ship models with model/data cards and clear licensing"],
+    industries:"AI labs, model and infra startups, big-tech ML orgs, and enterprises building custom models.",
+    demand:"Strong, and more specialized than app-level AI engineering — fewer roles, but higher-paid on average.",
+    salaryUS:"Among the highest: levels.fyi US medians ~$245K–$280K total comp; base commonly $150K–$250K+, with frontier-lab total comp well beyond."},
+  infra:{title:"MLOps / ML Infrastructure Engineer",aka:"ML platform engineer, LLMOps engineer, AI infra/systems, GPU/performance engineer",
+    summary:"Make AI run reliably and efficiently in production and at scale — serving, pipelines, monitoring, GPU/systems performance, and distributed training.",
+    does:["Stand up and operate inference/serving (vLLM/SGLang) and pipelines","Build CI/CD, monitoring, and cost/routing (LiteLLM)","Optimize GPU/kernel performance and scaling","Run distributed-training infrastructure"],
+    industries:"Cloud providers, AI labs, big-tech, fintech, and any org running ML at scale.",
+    demand:"High and broad — MLOps/LLMOps hire widely; the GPU-performance niche is specialized and hard to fill.",
+    salaryUS:"Roughly $120K–$300K+; MLOps commonly $130K–$220K base, with GPU/systems and staff levels higher and big-tech total comp well above."},
+  research:{title:"AI/ML Research Scientist / Research Engineer",aka:"Research scientist, research engineer, member of technical staff (research)",
+    summary:"Advance what models can do — novel methods, experiments, interpretability, and publications. Research engineers build the experimental infrastructure and run the experiments.",
+    does:["Design and run research experiments; publish","Reproduce and extend state-of-the-art methods","Work on interpretability, alignment, or new architectures","(Research engineer) build training/eval infra for researchers"],
+    industries:"Frontier AI labs, big-tech research, academia, and well-funded startups.",
+    demand:"Prestigious but competitive and credential-gated (often a PhD plus publications). Research engineer is the more accessible on-ramp.",
+    salaryUS:"Wide: research engineers ~$150K–$300K; research scientists at frontier labs are among the highest in tech — total comp from ~$180K to $500K–$900K+ at the top end."}
+};
+
+const UPDATES = [
+  // NEWEST FIRST — the monthly refresh prepends a new {date, title, items:[...]} entry directly below this line.
+  {date:"2026-08-14", title:"Public release — 7 tracks, role panel & update log", items:[
+    "Expanded to 7 tracks (added Coding Agents) with ~79 resources and 20 prove-it projects.",
+    "Added the Role Overview panel (responsibilities, industries, demand, salary) and this monthly update log.",
+    "Verified pricing (DeepLearning.AI freemium, AIRTP+ tiers), split OffSec/Arcanum certs, softened career claims, hardened HTML/links, and added browser-saved progress."
+  ]}
+];
+
 // --- safety helpers ---
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
 function safeUrl(u){u=String(u==null?"":u).trim();return /^https?:\/\//i.test(u)?u:"#";}
@@ -614,7 +705,7 @@ function setActive(container, btn){
 }
 document.getElementById("pills").addEventListener("click",function(e){
   const b=e.target.closest(".pill"); if(!b)return;
-  setActive(document.getElementById("pills"),b); state.track=b.dataset.track; apply();
+  setActive(document.getElementById("pills"),b); state.track=b.dataset.track; apply(); renderRoles(state.track);
 });
 document.getElementById("costToggle").addEventListener("click",function(e){
   const b=e.target.closest("button"); if(!b)return;
@@ -637,6 +728,43 @@ tracksEl.addEventListener("click",function(e){
   if(card.dataset.key){PROG[card.dataset.key]=ns; saveProg(PROG);}
   apply();
 });
+
+function roleCard(key,full){
+  const r=ROLES[key]; if(!r) return "";
+  const doesList=(r.does||[]).map(function(d){return '<li>'+esc(d)+'</li>';}).join("");
+  return '<div class="role-card">'+
+    '<div class="role-top"><span class="dot" style="background:'+TRACKS[key].color+'"></span><h4>'+esc(r.title)+'</h4></div>'+
+    (r.aka?'<div class="aka">Also: '+esc(r.aka)+'</div>':'')+
+    '<p class="role-sum">'+esc(r.summary)+'</p>'+
+    (full&&doesList?'<div class="role-does"><b>What you do</b><ul>'+doesList+'</ul></div>':'')+
+    '<div class="role-meta">'+
+      '<div><span class="rl">Industries</span>'+esc(r.industries)+'</div>'+
+      '<div><span class="rl">Demand</span>'+esc(r.demand)+'</div>'+
+      '<div><span class="rl">Salary (US, approx)</span>'+esc(r.salaryUS)+'</div>'+
+    '</div></div>';
+}
+function renderRoles(track){
+  const el=document.getElementById("roleContent"); if(!el) return;
+  let html;
+  if(track==="all"){ html='<div class="role-grid">'+order.map(function(k){return roleCard(k,false);}).join("")+'</div>'; }
+  else { html=roleCard(track,true); }
+  html+='<p class="role-caveat">US-market figures, approximate and highly variable by region, seniority, and company (frontier labs and big-tech pay well above these). Sources include levels.fyi, Glassdoor, the US BLS, and 2026 salary guides — verify against current job postings. Not career or financial advice.</p>';
+  el.innerHTML=html;
+  const lbl=document.getElementById("roleSumLabel");
+  if(lbl) lbl.textContent=(track==="all")?"all roles":((ROLES[track]&&ROLES[track].title)||"");
+}
+function renderUpdates(){
+  const el=document.getElementById("updatesContent"); if(!el) return;
+  if(!UPDATES.length){ el.innerHTML='<p class="role-caveat">No updates logged yet.</p>'; return; }
+  el.innerHTML=UPDATES.map(function(u){
+    var items=(u.items||[]).map(function(i){return '<li>'+esc(i)+'</li>';}).join("");
+    return '<div class="upd-entry"><div class="upd-head"><span class="upd-date">'+esc(u.date)+'</span> <b>'+esc(u.title)+'</b></div>'+(items?'<ul>'+items+'</ul>':'')+'</div>';
+  }).join("");
+}
+(function(){var rp=document.getElementById("rolesPanel"); if(rp){try{if(localStorage.getItem("allp_roles_open")==="1")rp.open=true;}catch(e){} rp.addEventListener("toggle",function(){try{localStorage.setItem("allp_roles_open",rp.open?"1":"0");}catch(e){}});}})();
+(function(){var up=document.getElementById("updatesPanel"); if(up){try{if(localStorage.getItem("allp_updates_open")==="1")up.open=true;}catch(e){} up.addEventListener("toggle",function(){try{localStorage.setItem("allp_updates_open",up.open?"1":"0");}catch(e){}});}})();
+renderRoles(state.track);
+renderUpdates();
 
 apply();
 </script>
